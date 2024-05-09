@@ -1,6 +1,0 @@
-[submodule "dotfiles"]
-	path = dotfiles
-	url = git@github.com:dixls/dotfiles.git
-[submodule "nvim-config"]
-	path = nvim-config
-	url = git@github.com:dixls/nvim-config.git
