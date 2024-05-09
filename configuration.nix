@@ -14,6 +14,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Fonts??
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    ];
+    fontconfig.defaultFonts.monospace = ["FantasqueSansMono"];
+  };
+
   networking.hostName = "snack-can"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -87,6 +96,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
+    shell = pkgs.zsh;
   }; 
   
   # Disable mouse acceleration
@@ -102,6 +112,9 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # use zsh
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

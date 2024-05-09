@@ -11,6 +11,9 @@ in {
   home.username = "pixls";
   home.homeDirectory = "/home/pixls";
 
+  imports = [
+    ./modules
+  ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -29,6 +32,8 @@ in {
     unstable.neovim
     unstable._1password-gui
     unstable._1password
+    pkgs.pyenv
+    pkgs.fd
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
