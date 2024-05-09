@@ -4,6 +4,14 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     unstablepkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # dotfiles = {
+    #   url = "github:dixls/dotfiles/ab10684fae7de4f9279ba0c11ed240966d36bd80";
+    #   flake = false;
+    # };
+    # nvim-config = {
+    #   url = "github:dixls/nvim-config/heads/main";
+    #   flake = false;
+    # };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
