@@ -1,0 +1,43 @@
+/* @import "mocha.css"; */
+@import "bouquet.css";
+
+* {
+  color: @text;
+  /* background-color: @base; */
+  border: none;
+  border-radius: 0;
+  font-family: FantasqueSansMNerdFont;
+}
+
+window {
+  background: @base;
+  padding: 0px;
+}
+
+
+
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail {
+    margin:     0px 8px;
+    min-width:  10px;
+}
+
+/* #clock { */
+/*     margin:     0px 16px 0px 10px; */
+/*     min-width:  140px; */
+/* } */
+
+#battery.warning {
+   color:       @pink;
+}
+
+#battery.critical {
+    color:      @red;
+}
+
+#battery.charging {
+    color:      @blue;
+}
+
+#workspaces button.active {
+    color:    @pink;
+}
