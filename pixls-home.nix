@@ -29,7 +29,7 @@ in {
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    unstable.neovim
+    unstable.neovim-unwrapped
     unstable._1password-gui
     unstable._1password
     pkgs.pyenv
