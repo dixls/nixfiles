@@ -129,6 +129,8 @@
     git
     curl
     wget
+    lshw
+    fastfetch
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

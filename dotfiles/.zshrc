@@ -83,6 +83,8 @@ compinit
 # set ls to ls -p so i see trailing / on dirs
 alias ls='ls -p'
 alias nv='nvim'
+# set default fetch
+alias fetch='fastfetch --load-config paleofetch'
 
 setopt CORRECT
 
