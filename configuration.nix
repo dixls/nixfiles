@@ -131,6 +131,8 @@
     wget
     lshw
     fastfetch
+    cmake
+    gcc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
