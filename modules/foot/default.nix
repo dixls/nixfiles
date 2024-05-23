@@ -14,7 +14,7 @@
       };
       colors = {
         foreground="E9E0D2"; # Text
-        background="173F35"; # Base
+        background="08211B"; # Base
         alpha=".85";
         regular0="82B0A5";   # Surface 1
         regular1="EAA09C";   # red
