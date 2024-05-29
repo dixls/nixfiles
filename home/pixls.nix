@@ -34,6 +34,9 @@ in {
     unstable._1password
     pkgs.pyenv
     pkgs.fd
+    pkgs.ripgrep
+    unstable.fastfetch
+    unstable.foot
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

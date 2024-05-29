@@ -25,5 +25,19 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  programs.zsh.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    ripgrep
+    fd
+    git
+    curl
+    lshw
+    python3
+  ];
+
+  services.openssh.enable = true;
 }
