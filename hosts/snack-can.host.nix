@@ -1,17 +1,25 @@
 { config, builtins, lib, pkgs, ... }:
 
-{
+let
+  wm = "awesome";
+  # wm = "gnome";
+in {
   # config for snack-can as a desktop, will make a new one for snack-can as a
   # server?
   networking.hostName = "snack-can";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.wayland.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  # I think I want to ditch gnome, or split that out into it's own thing?
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  if wm == "gnome" then
+    # I think I want to ditch gnome, or split that out into it's own thing?
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
+  # Enable awesomewm
+  if wm == "awesome" then
+    environment.systemPackages = pkgs.swayfx-unwrapped;
 
   # Configure keymap in X11
   services.xserver = {
