@@ -31,12 +31,24 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    ripgrep
-    fd
-    git
     curl
     lshw
+    which
+    tree
+
+    fzf
+    fd
+    ripgrep
+
+    git
     python3
+    postgresql_13
+    go
+
+    zip
+    xz
+    unzip
+    p7zip
   ];
 
   services.openssh.enable = true;

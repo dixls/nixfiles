@@ -3,5 +3,6 @@ _: {
     ./foot
     ./gnome
     ./nvim
+    ./tmux
   ];
 }

@@ -13,6 +13,7 @@ in {
 
   imports = [
     ./modules
+    ./git.nix
   ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -33,8 +34,6 @@ in {
     unstable._1password-gui
     unstable._1password
     pkgs.pyenv
-    pkgs.fd
-    pkgs.ripgrep
     unstable.fastfetch
     unstable.foot
 

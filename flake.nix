@@ -12,11 +12,11 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, utils, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, ... }:
     let
       mkApp = utils.lib.mkApp;
       pkgs = import nixpkgs {
-        inherit system;
+        system = "x86_64-linux";
         config.allowUnfree = true;
       };
 
@@ -24,6 +24,16 @@
     in utils.lib.mkFlake {
 
       inherit self inputs;
+
+      imports = [ # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        ./hosts/common.host.nix
+      ];
+
+      nixosConfigurations.snack-can = nixpgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/snack-can.host.nix ];
+      };
 
       supportedSystems = [ "x86_64-linux" ];
       channelsConfig.allowUnfree = true;
@@ -35,28 +45,16 @@
         modules = ./hosts/common.host.nix;
       };
 
-      hosts."snack-can".modules = [
-        ./hosts/snack-can.host.nix
-      ];
-      
+ 	    home-manager.nixosModules.home-manager = {
+	      home-manager.useGlobalPkgs = true;
+	      home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit inputs; };
+	      home-manager.users.pixls = import ./home/pixls.nix;
+	    };
+       
     };
 
-
-    # {
-    #   nixosConfigurations = {
-    #     snack-can = lib.nixosSystem {
-    #       inherit system;
-    #       specialArgs = { inherit inputs; };
-    #       modules = [
-    #         ./configuration.nix
-
-	  #   home-manager.nixosModules.home-manager {
-	  #     home-manager.useGlobalPkgs = true;
-	  #     home-manager.useUserPackages = true;
-    #           home-manager.extraSpecialArgs = { inherit inputs; };
-	  #     home-manager.users.pixls = import ./home/pixls.nix;
-	  #   }
-    #       ];
+  #       ];
     #     };
     #   };
     # };
