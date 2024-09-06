@@ -1,6 +1,11 @@
 { config, builtins, lib, pkgs, ... }:
 
 {
+  #import the defaults
+  imports = [
+    ./common.host.nix
+  ];
+
   # config for snack-can as a desktop, will make a new one for snack-can as a
   # server?
   networking.hostName = "snack-can";
@@ -70,8 +75,8 @@
   programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
-    cmake
     gcc
     nodejs_21
+    go
   ];
 }

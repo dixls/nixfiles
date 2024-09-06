@@ -4,8 +4,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "snack-can";
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/New_York";
@@ -43,7 +41,7 @@
     git
     python3
     postgresql_13
-    go
+    cmake
 
     zip
     xz

@@ -14,6 +14,7 @@
 
   outputs = inputs@{ self, nixpkgs, utils, home-manager, ... }:
     let
+      system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -27,13 +28,7 @@
 
       imports = [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
-        ./hosts/common.host.nix
       ];
-
-      hostsDefaults = {
-        system = "x86_64-linux";
-        extraArgs = { inherit utils inputs; };
-      };
 
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
@@ -44,16 +39,10 @@
         };
 
         snack-can = nixpgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
           modules = [ 
             ./hosts/snack-can.host.nix 
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.pixls = import ./home/pixls.nix;
-            }
           ];
         };
 
@@ -61,5 +50,12 @@
       channelsConfig.allowUnfree = true;
       channelsConfig.allowBroken = false;
 
+    };
+
+    homeConfigurations.pixls = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [
+        ./home/pixls.nix
+      ];
     };
 }
