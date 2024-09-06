@@ -47,7 +47,11 @@
     xz
     unzip
     p7zip
+
+    home-manager
   ];
 
   services.openssh.enable = true;
+
+  system.stateVersion = "23.11";
 }

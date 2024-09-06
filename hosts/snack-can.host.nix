@@ -30,6 +30,8 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.openssh.enable = true;
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -73,6 +75,14 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    ];
+    fontconfig.defaultFonts.monospace = ["FantasqueSansMono"];
+  };
 
   environment.systemPackages = with pkgs; [
     gcc

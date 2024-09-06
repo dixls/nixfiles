@@ -30,6 +30,8 @@
         ./hardware-configuration.nix
       ];
 
+      nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
           extraSpecialArgs = { inherit inputs; };
@@ -55,7 +57,7 @@
     homeConfigurations.pixls = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
-        ./home/pixls.nix
+        ./home/pixls/home.nix
       ];
     };
 }
