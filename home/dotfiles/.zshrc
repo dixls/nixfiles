@@ -108,7 +108,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-PATH="/opt/homebrew/bin:$PATH"
+# PATH="/opt/homebrew/bin:$PATH"
 # eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 export NVM_DIR="$HOME/.nvm"

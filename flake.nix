@@ -30,32 +30,36 @@
         ./hosts/common.host.nix
       ];
 
-      nixosConfigurations.snack-can = nixpgs.lib.nixosSystem {
+      hostsDefaults = {
         system = "x86_64-linux";
-        modules = [ ./hosts/snack-can.host.nix ];
+        extraArgs = { inherit utils inputs; };
       };
+
+      nixosConfigurations = {
+        default = nixpkgs.lib.nixosSystem {
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/common.host.nix
+          ];
+        };
+
+        snack-can = nixpgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ 
+            ./hosts/snack-can.host.nix 
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.pixls = import ./home/pixls.nix;
+            }
+          ];
+        };
 
       supportedSystems = [ "x86_64-linux" ];
       channelsConfig.allowUnfree = true;
       channelsConfig.allowBroken = false;
 
-      hostsDefaults = {
-        system = "x86_64-linux";
-        extraArgs = { inherit utils inputs; };
-        modules = ./hosts/common.host.nix;
-      };
-
- 	    home-manager.nixosModules.home-manager = {
-	      home-manager.useGlobalPkgs = true;
-	      home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs; };
-	      home-manager.users.pixls = import ./home/pixls.nix;
-	    };
-       
     };
-
-  #       ];
-    #     };
-    #   };
-    # };
 }
