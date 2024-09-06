@@ -12,11 +12,15 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, unstablepkgs, utils, home-manager, ... }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
       pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+      unstable = import unstablepkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
       };
@@ -26,25 +30,28 @@
 
       inherit self inputs;
 
-      imports = [ # Include the results of the hardware scan.
-        ./hardware-configuration.nix
-      ];
-
-      nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit pkgs; inherit unstable; };
           modules = [
             ./hosts/common.host.nix
+            ./configuration.nix
           ];
         };
 
-        snack-can = nixpgs.lib.nixosSystem {
+        snack-can = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [ 
+            ./hosts/common.host.nix
             ./hosts/snack-can.host.nix 
             home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit unstable; };
+              home-manager.users.pixls = import ./home/pixls/home.nix;
+            }
+            ./configuration.nix
           ];
         };
 
@@ -54,10 +61,11 @@
 
     };
 
-    homeConfigurations.pixls = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [
-        ./home/pixls/home.nix
-      ];
-    };
+    # homeConfigurations.pixls = home-manager.lib.homeManagerConfiguration {
+    #   pkgs = nixpkgs.legacyPackages.${system};
+    #   modules = [
+    #     ./home/pixls/home.nix
+    #   ];
+    # };
+  };
 }

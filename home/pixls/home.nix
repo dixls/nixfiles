@@ -1,11 +1,4 @@
-{ config, pkgs, inputs, ... }:
-
-let
-  unstable = import inputs.unstablepkgs {
-    system = pkgs.system;
-    config.allowUnfree = true;
-  };
-in {
+{ config, pkgs, unstable, ... }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pixls";

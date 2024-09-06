@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -9,14 +9,8 @@
     mouse = true;
     keyMode = "vi";
     prefix = "C-s";
-    plugins = with pkgs; [
+    plugins = with unstable; [
       tmuxPlugins.vim-tmux-navigator
-      # {
-      #   plugin = tmuxPlugins.power-theme;
-      #   extraConfig = ''
-      #     set -g @tmux_power_theme '#F5CABF'
-      #   '';
-      # }
       {
         plugin = tmuxPlugins.tmux-nova;
         extraConfig = ''
