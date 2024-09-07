@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./nvim
-    ./swayfx
+    # ./swayfx
 
     ./foot.nix
     ./gnome.nix

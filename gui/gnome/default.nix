@@ -6,7 +6,7 @@
     wayland = true;
   };
   services.xserver.desktopManager.gnome.enable = true;
-  # services.xserver.displayManager.defaultSession = "gnome";
+  services.xserver.displayManager.defaultSession = "gnome";
 
   environment.gnome.excludePackages = (with pkgs; [
     # for packages that are pkgs.*
