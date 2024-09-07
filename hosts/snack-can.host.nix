@@ -1,23 +1,14 @@
 { pkgs, hyprland, ... }:
 
 {
-  # config for snack-can as a desktop, will make a new one for snack-can as a
-  # server?
   networking.hostName = "snack-can";
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  # I think I want to ditch gnome, or split that out into it's own thing?
-  # gonna stick with gnome at least until i get a successful build and boot
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # Use this to pick which GUI I guess?
+  imports = [
+    ./../gui/swayfx/
+  ];
 
   # Configure keymap in X11
   services.xserver = {
@@ -39,18 +30,12 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account.
   users.users.pixls = {
     isNormalUser = true;
     description = "pixls";
@@ -78,6 +63,7 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      noto-fonts
     ];
     fontconfig.defaultFonts.monospace = ["FantasqueSansMono"];
   };
@@ -87,6 +73,6 @@
     nodejs_22
     go
 
-    kitty
+    foot
   ];
 }
