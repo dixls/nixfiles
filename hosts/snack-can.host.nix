@@ -1,4 +1,4 @@
-{ config, builtins, lib, pkgs, ... }:
+{ pkgs, hyprland, ... }:
 
 {
   # config for snack-can as a desktop, will make a new one for snack-can as a
@@ -11,10 +11,13 @@
   # Enable the GNOME Desktop Environment.
   # I think I want to ditch gnome, or split that out into it's own thing?
   # gonna stick with gnome at least until i get a successful build and boot
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  # Enable awesomewm
-  #  environment.systemPackages = pkgs.swayfx-unwrapped;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -28,7 +31,7 @@
   services.openssh.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -81,7 +84,7 @@
 
   environment.systemPackages = with pkgs; [
     gcc
-    nodejs_21
+    nodejs_22
     go
   ];
 }

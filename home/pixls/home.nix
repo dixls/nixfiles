@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }: {
+{ config, pkgs, ... }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pixls";
@@ -23,12 +23,12 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    unstable.neovim-unwrapped
-    unstable._1password-gui
-    unstable._1password
+    pkgs.neovim-unwrapped
+    pkgs._1password-gui
+    pkgs._1password
     pkgs.pyenv
-    unstable.fastfetch
-    unstable.foot
+    pkgs.fastfetch
+    pkgs.foot
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
