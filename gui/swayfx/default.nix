@@ -3,7 +3,7 @@
 {
   programs.sway = {
     enable = true;
-    wrapperFreatures.gtk = true;
+    wrapperFeatures.gtk = true;
     package = pkgs.swayfx;
     extraPackages = with pkgs; [
       swaylock
@@ -15,7 +15,6 @@
       alacritty
       wofi
       dmenu
-      configure-gtk
       xdg-utils
     ];
   };
