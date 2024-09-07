@@ -28,6 +28,7 @@
     lshw
     which
     tree
+    eza
 
     fzf
     fd

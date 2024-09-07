@@ -86,5 +86,7 @@
     gcc
     nodejs_22
     go
+
+    kitty
   ];
 }
