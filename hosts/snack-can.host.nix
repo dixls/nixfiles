@@ -8,7 +8,8 @@
   # Use this to pick which GUI I guess?
   imports = [
     # ./../gui/swayfx
-    ./../gui/gnome
+    # ./../gui/gnome
+    ./../gui/plasma
   ];
 
   # Configure keymap in X11
