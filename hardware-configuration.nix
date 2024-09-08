@@ -8,10 +8,11 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "wl" ];
+  boot.initrd.availableKernelModules = [ "ehci_pci" "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ "kvm-intel" "applesmc" "i915" "psmouse" "wl" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  boot.kernelParams = [ "i915.enable_rc6=7" "intel_pstate=active" "acpi_mask_gpe=0x15" "radeon.si_support=0" "amdgpu.si_support=1"]; # Enables RC6, RC6p and RC6pp sleep states, and see https://discourse.nixos.org/t/nixos-on-macbook-air-mid-2011/15611 for "acpi_mask_gpe=0x15", and see https://nixos.wiki/wiki/AMD_GPU
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/74191d9f-e260-4502-8cdf-42903447763a";

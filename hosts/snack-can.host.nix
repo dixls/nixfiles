@@ -8,8 +8,8 @@
   # Use this to pick which GUI I guess?
   imports = [
     # ./../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
-    # ./../gui/gnome
-    ./../gui/plasma
+    ./../gui/gnome
+    # ./../gui/plasma
   ];
 
   # Configure keymap in X11
@@ -34,6 +34,10 @@
     pulse.enable = true;
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
