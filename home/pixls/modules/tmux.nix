@@ -1,4 +1,16 @@
-{ pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+let
+  tmux-nova = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "tmux-nova";
+    version = "1.2.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "o0th";
+      repo = "tmux-nova";
+      rev = "6c8fc10d3daa03f400ea9000f9321d8332eab229";
+      sha256 = "16llz3nlyw88lyd8mmj27i0ncyhpfjj5c1yikngf7nxcqsbjmcnh";
+    };
+  };
+in 
 {
   programs.tmux = {
     enable = true;
@@ -12,7 +24,7 @@
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       {
-        plugin = tmuxPlugins.tmux-nova;
+        plugin = tmux-nova;
         extraConfig = ''
           set -g @nova-nerdfonts true
           set -g @nova-nerdfonts-left 

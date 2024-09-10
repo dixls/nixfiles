@@ -2,19 +2,19 @@
   description = "pixls' nix config";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    unstablepkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, ... }:
+  outputs = inputs@{ self, nixpkgs, unstablepkgs, utils, home-manager, hyprland, ... }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
@@ -48,7 +48,6 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
-                inherit hyprland;
               };
               home-manager.users.pixls = import ./home/pixls/home.nix;
             }
