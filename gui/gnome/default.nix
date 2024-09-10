@@ -15,8 +15,8 @@
 
   # services.xserver.displayManager.gdm.wayland = false;
 
-  # services.xserver.displayManager.autoLogin.enable = true;
-  # services.xserver.displayManager.autoLogin.user = "pixls";
-  # systemd.services."gett@tty1".enable = false;
-  # systemd.services."autovt@tty1".enable = false;
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "pixls";
+  systemd.services."gett@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 }
