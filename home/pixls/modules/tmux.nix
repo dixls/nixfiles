@@ -61,7 +61,6 @@ in
     ];
     extraConfig = ''
       set-option -g status-position top
-      set-option -ga terminal-overrides ',alacritty:Tc'
 
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
