@@ -12,9 +12,15 @@
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkges.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, plasma-manager, ... }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
@@ -51,6 +57,7 @@
                 inherit hyprland;
               };
               home-manager.users.pixls = import ./home/pixls/home.nix;
+              home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
             }
             ./configuration.nix
           ];
