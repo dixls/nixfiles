@@ -60,12 +60,5 @@
       channelsConfig.allowBroken = false;
 
     };
-
-    # homeConfigurations.pixls = home-manager.lib.homeManagerConfiguration {
-    #   pkgs = nixpkgs.legacyPackages.${system};
-    #   modules = [
-    #     ./home/pixls/home.nix
-    #   ];
-    # };
   };
 }

@@ -24,7 +24,7 @@
   services.openssh.enable = true;
 
   # Enable sound with pipewire.
-  # sound.enable = true;
+  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -54,14 +54,6 @@
   
   # Disable mouse acceleration
   services.xserver.libinput.mouse.accelProfile = "flat";
-
-  # Enable automatic login for the user.
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "pixls";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
