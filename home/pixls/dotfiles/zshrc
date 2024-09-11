@@ -69,7 +69,8 @@ setopt histignorealldups sharehistory
 setopt AUTO_CD
 
 # Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# bindkey -e
+export EDITOR="nvim"
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
@@ -81,7 +82,7 @@ autoload -Uz compinit
 compinit
 
 # set ls to ls -p so i see trailing / on dirs
-alias ls='ls -p'
+alias ls='eza'
 alias nv='nvim'
 # set default fetch
 alias fetch='fastfetch --load-config paleofetch'

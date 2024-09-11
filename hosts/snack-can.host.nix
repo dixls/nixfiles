@@ -50,6 +50,7 @@
     packages = with pkgs; [
     ];
     shell = pkgs.zsh;
+
   }; 
   
   # Disable mouse acceleration
