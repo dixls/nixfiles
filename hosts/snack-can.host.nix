@@ -1,4 +1,4 @@
-{ pkgs, hyprland, ... }:
+{ config, pkgs, hyprland, ... }:
 
 {
   networking.hostName = "snack-can";
