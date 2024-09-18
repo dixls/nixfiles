@@ -4,7 +4,12 @@ autoload -Uz promptinit
 autoload -Uz vcs_info
 promptinit
 # shows cross bones on error
-PROMPT='%(?.%F{green}💀.%F{red}☠️%?)%f %B%F{blue}%1~%f%b %# '
+if [[ $HOST == snack-can ]]
+then
+  PROMPT='%(?.%F{green}🍩.%F{red}🫗%?)%f %B%F{blue}%1~%f%b %# '
+else
+  PROMPT='%(?.%F{green}💀.%F{red}☠️%?)%f %B%F{blue}%1~%f%b %# '
+fi
 setopt prompt_subst
 
 # git info function adapted from Josh Dick - https://joshdick.net/2017/06/08/my_git_prompt_for_zsh_revisited.html
