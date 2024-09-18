@@ -1,11 +1,4 @@
-{ config, pkgs, inputs, ... }:
-
-let
-  unstable = import inputs.unstablepkgs {
-    system = pkgs.system;
-    config.allowUnfree = true;
-  };
-in {
+{ config, pkgs, ... }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pixls";
@@ -13,6 +6,7 @@ in {
 
   imports = [
     ./modules
+    ./git.nix
   ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -29,11 +23,12 @@ in {
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    unstable.neovim-unwrapped
-    unstable._1password-gui
-    unstable._1password
+    pkgs.neovim-unwrapped
+    pkgs._1password-gui
+    pkgs._1password
     pkgs.pyenv
-    pkgs.fd
+    pkgs.fastfetch
+    pkgs.foot
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -56,8 +51,8 @@ in {
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".vimrc".source = ./dotfiles/.vimrc;
-    ".zshrc".source = ./dotfiles/.zshrc;
+    ".vimrc".source = ./dotfiles/vimrc;
+    ".zshrc".source = ./dotfiles/zshrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
