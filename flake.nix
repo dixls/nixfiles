@@ -2,20 +2,24 @@
   description = "pixls' nix config";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # nixos 23.11
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05"; # nixos 24.05
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # nixos unstable
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager"; # unstable
+      # url = "github:nix-community/home-manager/release-24.05";
+      # url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # probably getting rid of these
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
-      inputs.nixpkges.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
   };

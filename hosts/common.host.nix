@@ -1,6 +1,46 @@
-{ config, builtins, lib, pkgs, ... }:
+{ config, builtins, lib, pkgs, inputs, ... }:
 
 {
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  nix.optimise.automatic = true;
+  nix.optimise.dates = ["weekly"];
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+    ];
+    dates = "05:00";
+    randomizedDelaySec = "45min";
+  };
+
+  services.openssh = {
+    enable lib.mkDefault true;
+    settings = {
+      PasswordAuthentication = lib.mkDefault false;
+      LoginGraceTime = 0;
+      PermitRootLogin = "no";
+    };
+    hostKeys = [
+      {
+        
+      }
+    ];
+  };
+
+  security = {
+    sudo = {
+      enable = lib.mkDefault true;
+      wheelNeedsPassword = lib.mkDefault false;
+    };
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -19,6 +59,15 @@
   };
 
   programs.zsh.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
+  }
+  programs.htop.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
