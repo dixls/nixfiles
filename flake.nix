@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+
     # probably getting rid of these
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
@@ -24,7 +29,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, plasma-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, darwin, hyprland, plasma-manager, ... }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
@@ -37,6 +42,10 @@
     in utils.lib.mkFlake {
 
       inherit self inputs;
+
+      supportedSystems = [ "x86_64-linux" ];
+      channelsConfig.allowUnfree = true;
+      channelsConfig.allowBroken = false;
 
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
@@ -67,17 +76,21 @@
           ];
         };
 
-      supportedSystems = [ "x86_64-linux" ];
-      channelsConfig.allowUnfree = true;
-      channelsConfig.allowBroken = false;
-
+      darwinConfigurations.space-cadet = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./hosts/darwin/space-cadet.host.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
+            home-manager.users.pixls = import ./home/pixls/home.nix;
+          }
+        ];
+      };
     };
-
-    # homeConfigurations.pixls = home-manager.lib.homeManagerConfiguration {
-    #   pkgs = nixpkgs.legacyPackages.${system};
-    #   modules = [
-    #     ./home/pixls/home.nix
-    #   ];
-    # };
   };
 }
