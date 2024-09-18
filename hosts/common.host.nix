@@ -44,7 +44,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = lib.mkDefault true;
+  networking.defaultGateway = "192.168.1.1";
+  networking.nameservers = ["192.168.1.1"];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";

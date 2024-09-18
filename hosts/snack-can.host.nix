@@ -3,9 +3,9 @@
 {
   networking = {
     hostName = "snack-can";
-    useDHCP = lib.mkForce true;
     firewall = {
       allowPing = true;
+      allowedTCPPorts = [ 22 80 443 ];
     };
   };
 
@@ -20,6 +20,24 @@
   ];
 
   services.openssh.enable = true;
+
+  networking = {
+    networkmanager.enable = false;
+    interfaces.enp12s0.useDHCP = false;
+    interfaces.enp12s0.ipv4addresses = [
+      {
+        address = "192.168.1.15";
+        prefixLength = 24;
+      }
+    ];
+    interfaces.enp11s0.useDHCP = false;
+    interfaces.enp11s0.ipv4addresses = [
+      {
+        address = "192.168.1.16";
+        prefixLength = 24;
+      }
+    ];
+  };
 
   # Define a user account.
   users.users.pixls = {
