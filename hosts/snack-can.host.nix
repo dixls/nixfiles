@@ -1,10 +1,9 @@
-{ pkgs, hyprland, ... }:
+{ pkgs, lib, ... }:
 
 {
   networking = {
     hostName = "snack-can";
-    timeZone = "America/New_York";
-    useDHCP = true;
+    useDHCP = lib.mkForce true;
     firewall = {
       allowPing = true;
     };
@@ -31,9 +30,7 @@
     ];
     shell = pkgs.zsh;
     uid = 1000;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519
-    AAAAC3NzaC1lZDI1NTE5AAAAIL/Svq2HyjLSPdngI4JJLqPlDiQdOpkuvWCoeBUGCkv2
-    pixls@space-cadet" ];
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL/Svq2HyjLSPdngI4JJLqPlDiQdOpkuvWCoeBUGCkv2 pixls@space-cadet" ];
   }; 
   
   fonts = {

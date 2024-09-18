@@ -12,7 +12,6 @@
 
   system.autoUpgrade = {
     enable = true;
-    flake = inputs.self.outPath;
     flags = [
       "--update-input"
     ];
@@ -21,7 +20,7 @@
   };
 
   services.openssh = {
-    enable lib.mkDefault true;
+    enable = lib.mkDefault true;
     settings = {
       PasswordAuthentication = lib.mkDefault false;
       LoginGraceTime = 0;
@@ -29,7 +28,8 @@
     };
     hostKeys = [
       {
-        
+        path = "/etc/ssh/ssh_host-ed25519_key";
+        type = "ed25519";
       }
     ];
   };
@@ -65,7 +65,7 @@
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
-  }
+  };
   programs.htop.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -95,6 +95,4 @@
 
     home-manager
   ];
-
-  services.openssh.enable = true;
 }
