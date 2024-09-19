@@ -11,12 +11,15 @@
 
   # services.xserver.enable = true;
 
-  # Use this to pick which GUI I guess?
+  # Use this to pick which GUI and other bundles
   imports = [
     # ./../gui/desktop-defaults.nix
     # ./../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
     # ./../gui/gnome
     # ./../gui/plasma
+
+    # other bundles
+    ./../system-modules/server-bundle.nix
   ];
 
   services.openssh.enable = true;
