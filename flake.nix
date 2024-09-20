@@ -71,7 +71,7 @@
           inherit system;
           modules = [ 
             ./hosts/common.host.nix
-            ./hosts/sweet.host.nix 
+            ./hosts/sweet/sweet.host.nix 
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -89,7 +89,7 @@
           inherit system;
           modules = [ 
             ./hosts/common.host.nix
-            ./hosts/savory.host.nix 
+            ./hosts/savory/savory.host.nix 
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

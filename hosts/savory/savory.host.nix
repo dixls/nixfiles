@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "sweet";
+    hostName = "savory";
     firewall = {
       allowPing = true;
       allowedTCPPorts = [ 22 80 443 ];
@@ -13,6 +13,8 @@
 
   # Use this to pick which GUI and other bundles
   imports = [
+    ./hardware-configuration.nix
+
     # ./../gui/desktop-defaults.nix
     # ./../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
     # ./../gui/gnome
@@ -29,7 +31,7 @@
     interfaces.ens18.useDHCP = true;
     interfaces.ens18.ipv4.addresses = [
       {
-        address = "192.168.1.18";
+        address = "192.168.1.19";
         prefixLength = 24;
       }
     ];
