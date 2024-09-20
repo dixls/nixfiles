@@ -4,9 +4,12 @@ autoload -Uz promptinit
 autoload -Uz vcs_info
 promptinit
 # shows cross bones on error
-if [[ $HOST == snack-can ]]
+if [[ $HOST == sweet ]]
 then
   PROMPT='%(?.%F{green}🍩.%F{red}🫗%?)%f %B%F{blue}%1~%f%b %# '
+elif [[ $HOST == savory ]]
+then
+  PROMPT='%(?.%F{green}🍟.%F{red}🫗%?)%f %B%F{blue}%1~%f%b %# '
 else
   PROMPT='%(?.%F{green}💀.%F{red}☠️%?)%f %B%F{blue}%1~%f%b %# '
 fi
