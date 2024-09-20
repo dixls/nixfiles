@@ -9,6 +9,12 @@
     };
   };
 
+  # boot.loader.efi.efiSysMountPoint = "/dev/sda";
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
+
   # services.xserver.enable = true;
 
   # Use this to pick which GUI and other bundles
@@ -21,7 +27,7 @@
     # ./../gui/plasma
 
     # other bundles
-    ./../system-modules/server-bundle.nix
+    ./../../system-modules/server-bundle.nix
   ];
 
   services.openssh.enable = true;
