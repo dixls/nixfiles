@@ -11,6 +11,8 @@
 
   services.xserver.enable = true;
 
+  hardware.graphics.enable32Bit = true;
+
   # Use this to pick which GUI and other bundles
   imports = [
     ./hardware-configuration.nix
@@ -22,6 +24,7 @@
 
     # other bundles
     #./../system-modules/server-bundle.nix
+    ./../../system-modules/desktop-bundle.nix
   ];
 
   services.openssh.enable = true;

@@ -29,6 +29,7 @@
     pkgs.pyenv
     pkgs.fastfetch
     pkgs.foot
+    pkgs.gotop
 
     pkgs.steam
 
