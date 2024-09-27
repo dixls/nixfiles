@@ -1,6 +1,10 @@
 { pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    pkgs.discord
+    discord
+    steam
+
+    gutenprint
+    gutenprintBin
   ];
 }
