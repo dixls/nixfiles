@@ -60,10 +60,15 @@
     go
 
     foot
+
+    liquidctl
   ];
 
   services.hardware.openrgb = {
+    package = pkgs.openrgb-with-all-plugins;
     enable = true;
     motherboard = "amd";
   };
+  # needed for gigabyte mobo?
+  boot.kernelParams = [ "acpi_enforce_resources=lax" ];
 }
