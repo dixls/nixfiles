@@ -6,7 +6,7 @@
   services.mastodon = {
     enable = true;
     localDomain = "snack.haus";
-    configureNginx = false;
+    configureNginx = true;
     smtp.fromAddress = "notifications@snack.haus";
     streamingProcesses = 7;
   };
