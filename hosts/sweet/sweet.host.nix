@@ -28,7 +28,7 @@
 
     # other bundles
     ./../../system-modules/server-bundle.nix
-    ./../../containers/sweet-budnle.nix
+    ./../../containers/sweet-bundle.nix
 
     # ./../../system-modules/mastodon
   ];
