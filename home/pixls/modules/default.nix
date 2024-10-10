@@ -4,8 +4,8 @@ _: {
     # ./swayfx
 
     ./foot.nix
-    ./gnome.nix
-    # ./plasma.nix
+    # ./gnome.nix
+    ./plasma.nix
     ./tmux.nix
   ];
 }
