@@ -10,6 +10,7 @@
   };
 
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   hardware.graphics.enable32Bit = true;
 
@@ -19,8 +20,8 @@
 
     ./../../gui/desktop-defaults.nix
     # ./../../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
-    ./../../gui/gnome
-    # ./../../gui/plasma
+    # ./../../gui/gnome
+    ./../../gui/plasma
 
     # other bundles
     #./../system-modules/server-bundle.nix
