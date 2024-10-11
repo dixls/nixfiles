@@ -22,9 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, plasma-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, plasma-manager, nixos-cosmic, ... }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
@@ -118,6 +120,15 @@
               home-manager.users.pixls = import ./home/pixls/home.nix;
             }
             ./configuration.nix
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [
+                  "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+                ];
+              };
+            }
+            nixos-cosmic.nixosModules.default
           ];
         };
 
