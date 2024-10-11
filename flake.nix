@@ -120,15 +120,17 @@
               home-manager.users.pixls = import ./home/pixls/home.nix;
             }
             ./configuration.nix
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [
-                  "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-                ];
-              };
-            }
-            nixos-cosmic.nixosModules.default
+
+            # These are for Cosmic while it's still being worked on
+            # {
+            #   nix.settings = {
+            #     substituters = [ "https://cosmic.cachix.org/" ];
+            #     trusted-public-keys = [
+            #       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+            #     ];
+            #   };
+            # }
+            # nixos-cosmic.nixosModules.default
           ];
         };
 
