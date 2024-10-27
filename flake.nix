@@ -15,7 +15,7 @@
     };
 
     # probably getting rid of these
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";

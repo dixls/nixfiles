@@ -5,6 +5,7 @@
     steam
     zoom-us
     obsidian
+    chromium
 
     gutenprint
     gutenprintBin
