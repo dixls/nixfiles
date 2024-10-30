@@ -30,6 +30,7 @@
     pkgs.fastfetch
     pkgs.foot
     pkgs.gotop
+    pkgs.nvtopPackages.amd
 
     pkgs.steam
 
