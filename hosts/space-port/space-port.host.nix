@@ -33,6 +33,7 @@
 
   networking = {
     networkmanager.enable = true;
+    interfaces.wlp5s0.wakeOnLan.enable = true;
   };
 
   # Define a user account.
