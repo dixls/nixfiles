@@ -9,5 +9,7 @@
 
     gutenprint
     gutenprintBin
+
+    prusa-slicer
   ];
 }
