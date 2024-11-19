@@ -14,9 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # probably getting rid of these
-    hyprland.url = "github:hyprwm/Hyprland";
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
