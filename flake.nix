@@ -15,16 +15,18 @@
     };
 
     # probably getting rid of these
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, plasma-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, plasma-manager, nixos-cosmic, ... }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
@@ -100,6 +102,36 @@
               home-manager.users.pixls = import ./home/pixls/home.nix;
             }
             ./configuration.nix
+          ];
+        };
+
+        space-port = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/common.host.nix
+            ./hosts/space-port/space-port.host.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+              };
+              home-manager.users.pixls = import ./home/pixls/home.nix;
+            }
+            ./configuration.nix
+
+            # These are for Cosmic while it's still being worked on
+            # {
+            #   nix.settings = {
+            #     substituters = [ "https://cosmic.cachix.org/" ];
+            #     trusted-public-keys = [
+            #       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+            #     ];
+            #   };
+            # }
+            # nixos-cosmic.nixosModules.default
           ];
         };
 

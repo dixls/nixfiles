@@ -25,10 +25,14 @@
     # pkgs.hello
     pkgs.neovim-unwrapped
     pkgs._1password-gui
-    pkgs._1password
+    pkgs._1password-cli
     pkgs.pyenv
     pkgs.fastfetch
     pkgs.foot
+    pkgs.gotop
+    pkgs.nvtopPackages.amd
+
+    pkgs.steam
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
