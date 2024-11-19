@@ -23,7 +23,15 @@
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, plasma-manager, nixos-cosmic, ... }:
+  outputs = inputs@{
+    self,
+    nixpkgs,
+    utils,
+    home-manager,
+    plasma-manager,
+    nixos-cosmic,
+    ...
+  }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
@@ -39,7 +47,7 @@
 
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
-          extraSpecialArgs = { inherit inputs; };
+          # extraSpecialArgs = { inherit inputs; };
           modules = [
             ./hosts/common.host.nix
             ./configuration.nix
