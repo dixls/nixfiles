@@ -23,7 +23,7 @@
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, home-manager, hyprland, plasma-manager, nixos-cosmic, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, home-manager, plasma-manager, nixos-cosmic, ... }:
     let
       system = "x86_64-linux";
       mkApp = utils.lib.mkApp;
@@ -57,7 +57,6 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
-                inherit hyprland;
               };
               home-manager.users.pixls = import ./home/pixls/home.nix;
               home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
