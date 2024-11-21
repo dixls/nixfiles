@@ -11,5 +11,7 @@
     gutenprintBin
 
     prusa-slicer
+
+    hugo
   ];
 }

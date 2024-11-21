@@ -16,4 +16,8 @@
     plasma-browser-integration
     oxygen
   ];
+
+  imports = [
+    ./plasma-manager.nix
+  ];
 }
