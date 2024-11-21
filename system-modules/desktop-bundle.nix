@@ -6,6 +6,7 @@
     zoom-us
     obsidian
     chromium
+    plexamp
 
     gutenprint
     gutenprintBin

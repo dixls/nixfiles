@@ -18,6 +18,6 @@
   ];
 
   imports = [
-    ./plasma-manager.nix
+    # ./plasma-manager.nix
   ];
 }
