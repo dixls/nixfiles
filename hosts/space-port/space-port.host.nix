@@ -17,6 +17,7 @@
   # Use this to pick which GUI and other bundles
   imports = [
     ./hardware-configuration.nix
+    ../../users/pixls.nix
 
     ./../../gui/desktop-defaults.nix
     # ./../../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
@@ -35,18 +36,6 @@
     networkmanager.enable = true;
     interfaces.wlp5s0.wakeOnLan.enable = true;
   };
-
-  # Define a user account.
-  users.users.pixls = {
-    isNormalUser = true;
-    description = "pixls";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
-    shell = pkgs.zsh;
-    uid = 1000;
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL/Svq2HyjLSPdngI4JJLqPlDiQdOpkuvWCoeBUGCkv2 pixls@space-cadet" ];
-  }; 
   
   fonts = {
     enableDefaultPackages = true;
