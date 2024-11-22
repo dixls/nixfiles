@@ -33,6 +33,15 @@
 
   services.openssh.enable = true;
 
+  fileSystems."/mnt/snack-pool" = {
+    device = "//192.168.1.22/snack-pool";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount" "noauto"
+      "credentials=${config.sops.secrets."savory-samba".path}"
+    ];
+  };
+
   networking = {
     networkmanager.enable = false;
     interfaces.ens18.useDHCP = true;
