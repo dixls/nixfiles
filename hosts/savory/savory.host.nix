@@ -29,6 +29,7 @@
 
     # other bundles
     ./../../system-modules/server-bundle.nix
+    ./../../system-modules/savory-bundle.nix
   ];
 
   services.openssh.enable = true;
