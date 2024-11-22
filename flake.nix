@@ -93,28 +93,19 @@
 
         savory = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ 
-            ./hosts/common.host.nix
+          modules = lib.lists.flatten [ 
+            commonModules
             ./hosts/savory/savory.host.nix 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-              };
-              home-manager.users.pixls = import ./home/pixls/home.nix;
-            }
-            ./configuration.nix
+            sops-nix.nixosModules.sops
           ];
         };
 
         space-port = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [
-            ./hosts/common.host.nix
+          modules = lib.lists.flatten [ 
+            commonModules
             ./hosts/space-port/space-port.host.nix
-            ./configuration.nix
+            sops-nix.nixosModules.sops
 
             # These are for Cosmic while it's still being worked on
             # {
