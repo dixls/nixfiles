@@ -1,0 +1,13 @@
+keys:
+  - &users:
+    - &pixls age1jehmwuad3maxhpfwxvg00sfztalhf9pw3hd9vnm4829uf7dvz3asexzmjc
+  - &hosts:
+    - &space-cadet age1xqym34ma2wlhly9tnus92fctxaemasxz80acrtty2a3ghlcgjgqq6a58jq
+    - &sweet age1h7a0pg53920zxctrxk0lg6p72mqhhdvqz699hqrlpe9wx93yxd5sujxekw
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+      - age:
+        - *pixls
+        - *space-cadet
+        - *sweet

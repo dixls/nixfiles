@@ -1,6 +1,25 @@
 { config, builtins, lib, pkgs, inputs, ... }:
 
 {
+  sops = {
+    defaultSopsFile = ../secrets.yaml;
+    validateSopsFiles = false;
+
+    age = {
+      sshKeyPaths = [ "/etc/ssh/ssh_host-ed25519_key" ];
+      keyFile = "/var/lib/sops-nix/key.txt";
+      generateKey = true;
+    };
+
+    secrets = {
+      "smtp-password" = {};
+      "sweet-samba" = {};
+      "savory-samba" = {};
+      "pixls-samba" = {};
+    };
+  };
+
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -89,6 +108,7 @@
     python3
     postgresql_13
     cmake
+    cifs-utils
 
     zip
     xz

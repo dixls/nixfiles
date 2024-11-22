@@ -20,6 +20,7 @@
   # Use this to pick which GUI and other bundles
   imports = [
     ./hardware-configuration.nix
+    ../../users/pixls.nix
 
     # ./../gui/desktop-defaults.nix
     # ./../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
@@ -32,6 +33,15 @@
 
   services.openssh.enable = true;
 
+  fileSystems."/mnt/snack-pool" = {
+    device = "//192.168.1.22/snack-pool";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount" "noauto"
+      "credentials=${config.sops.secrets."savory-samba".path}"
+    ];
+  };
+
   networking = {
     networkmanager.enable = false;
     interfaces.ens18.useDHCP = true;
@@ -42,21 +52,6 @@
       }
     ];
   };
-
-  # Define a user account.
-  users.users.pixls = {
-    isNormalUser = true;
-    description = "pixls";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
-    shell = pkgs.zsh;
-    uid = 1000;
-    openssh.authorizedKeys.keys = [ 
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL/Svq2HyjLSPdngI4JJLqPlDiQdOpkuvWCoeBUGCkv2 pixls@space-cadet" 
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBKeJE0SYxkOxtmUmAHMezxWqa9htjMgXbLXHw0qjEc pixls@space-port"
-    ];
-  }; 
   
   fonts = {
     enableDefaultPackages = true;
