@@ -7,6 +7,7 @@
     obsidian
     chromium
     plexamp
+    vial
 
     gutenprint
     gutenprintBin
