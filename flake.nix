@@ -20,7 +20,10 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";`
+    };
 
     sops-nix = {
       url = "github:mic92/sops-nix";
