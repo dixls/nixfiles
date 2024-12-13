@@ -8,6 +8,7 @@
     chromium
     plexamp
     vial
+    # kicad
 
     gutenprint
     gutenprintBin

@@ -49,7 +49,7 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      nerd-fonts.fantasque-sans-mono
       noto-fonts
     ];
     fontconfig.defaultFonts.monospace = ["FantasqueSansMono"];
