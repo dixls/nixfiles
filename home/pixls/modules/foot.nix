@@ -5,7 +5,7 @@
     settings = {
       main = {
         term = "xterm-256color";
-        font = "FantasqueSansMNerdFont:size=10";
+        font = "monospace:size=10";
         dpi-aware = "yes";
         pad = "5x5";
       };
