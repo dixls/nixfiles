@@ -103,7 +103,7 @@
           ];
         };
 
-        space-port = nixpkgs.lib.nixosSystem {
+        space-port-cosmic = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = lib.lists.flatten [ 
             commonModules
@@ -111,15 +111,26 @@
             sops-nix.nixosModules.sops
 
             # These are for Cosmic while it's still being worked on
-            # {
-            #   nix.settings = {
-            #     substituters = [ "https://cosmic.cachix.org/" ];
-            #     trusted-public-keys = [
-            #       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-            #     ];
-            #   };
-            # }
-            # nixos-cosmic.nixosModules.default
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [
+                  "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+                ];
+              };
+            }
+            nixos-cosmic.nixosModules.default
+            ./gui/cosmic
+          ];
+        };
+
+        space-port = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = lib.lists.flatten [ 
+            commonModules
+            ./hosts/space-port/space-port.host.nix
+            sops-nix.nixosModules.sops
+            ./gui/plasma
           ];
         };
 

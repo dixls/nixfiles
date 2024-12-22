@@ -22,8 +22,6 @@
     ./../../gui/desktop-defaults.nix
     # ./../../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
     # ./../../gui/gnome
-    ./../../gui/plasma
-    # ./../../gui/cosmic
 
     # other bundles
     #./../system-modules/server-bundle.nix
