@@ -14,6 +14,9 @@
 
   hardware.graphics.enable32Bit = true;
 
+  # use the newest kernel?
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Use this to pick which GUI and other bundles
   imports = [
     ./hardware-configuration.nix
@@ -26,6 +29,7 @@
     # other bundles
     #./../system-modules/server-bundle.nix
     ./../../system-modules/desktop-bundle.nix
+    ./../../system-modules/gaming
   ];
 
   services.openssh.enable = true;

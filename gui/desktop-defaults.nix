@@ -8,7 +8,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -25,7 +25,9 @@
   services.printing = {
     enable = true;
     drivers = [
+      pkgs.epson-escpr2
       pkgs.epson-escpr
+      pkgs.epsonscan2
     ];
   };
 

@@ -2,13 +2,13 @@
 {
   environment.systemPackages = with pkgs; [
     discord
-    steam
     zoom-us
     obsidian
     chromium
     plexamp
     vial
     # kicad
+    vlc
 
     gutenprint
     gutenprintBin
