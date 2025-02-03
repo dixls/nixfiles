@@ -99,6 +99,7 @@
     which
     tree
     eza
+    pandoc
 
     fzf
     fd
@@ -116,5 +117,8 @@
     p7zip
 
     home-manager
+
+    texlive.combined.scheme-minimal
+    wkhtmltopdf
   ];
 }
