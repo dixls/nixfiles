@@ -30,6 +30,16 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lix = {
+      url = "git+https://git.lix.systems/lix-project/lix";
+      flake = false;
+    };
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
@@ -40,6 +50,8 @@
     plasma-manager,
     nixos-cosmic,
     sops-nix,
+    lix,
+    lix-module,
     ...
   }:
     let
@@ -121,7 +133,9 @@
               };
             }
             nixos-cosmic.nixosModules.default
-            ./gui/cosmic
+            # ./gui/cosmic
+            ./gui/plasma
+            lix-module.nixosModules.default
           ];
         };
 
@@ -132,6 +146,7 @@
             ./hosts/space-port/space-port.host.nix
             sops-nix.nixosModules.sops
             ./gui/plasma
+            lix-module.nixosModules.default
           ];
         };
 

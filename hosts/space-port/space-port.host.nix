@@ -65,6 +65,7 @@
     foot
 
     liquidctl
+    cachix
   ];
 
   services.hardware.openrgb = {
