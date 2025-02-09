@@ -40,6 +40,11 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-snapd = {
+      url = "github:nix-community/nix-snapd";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
@@ -52,6 +57,7 @@
     sops-nix,
     lix,
     lix-module,
+    nix-snapd,
     ...
   }:
     let
@@ -133,9 +139,13 @@
               };
             }
             nixos-cosmic.nixosModules.default
-            # ./gui/cosmic
-            ./gui/plasma
+            ./gui/cosmic
+            # ./gui/plasma
             lix-module.nixosModules.default
+            nix-snapd.nixosModules.default
+            {
+              services.snap.enable = true;
+            }
           ];
         };
 
@@ -147,6 +157,10 @@
             sops-nix.nixosModules.sops
             ./gui/plasma
             lix-module.nixosModules.default
+            nix-snapd.nixosModules.default
+            {
+              services.snap.enable = true;
+            }
           ];
         };
 
