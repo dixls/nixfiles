@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     discord
+    vesktop
     zoom-us
     obsidian
     chromium
