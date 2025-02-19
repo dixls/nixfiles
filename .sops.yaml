@@ -1,17 +1,21 @@
 keys:
   - &users:
-    - &pixls age1q0qlpd23au7d3zs69dgnsg0zu3dasly6usyzqtdqvgphj4n3n4aqtghh3n
+    - &pixls-univ age1q0qlpd23au7d3zs69dgnsg0zu3dasly6usyzqtdqvgphj4n3n4aqtghh3n
+    - &pixls-cadet age1jehmwuad3maxhpfwxvg00sfztalhf9pw3hd9vnm4829uf7dvz3asexzmjc
   - &hosts:
     - &space-cadet age1xqym34ma2wlhly9tnus92fctxaemasxz80acrtty2a3ghlcgjgqq6a58jq
     - &sweet age1h7a0pg53920zxctrxk0lg6p72mqhhdvqz699hqrlpe9wx93yxd5sujxekw
     - &savory age1cze96qzngjf0hks4ftpzh65ggjqwja6jt8uy3sv3gqsy9ldu4deslsmzkw
     - &space-port age1y6ymgw53y383kj30z2v86kyhvym9d3q5xxul7xcfs6c7tudakyzs0vh52n
+    - &pve-basic age1m0fd5fj39k8k4amaudah3lkgz7m2gphs7tfe0y5ndwg2yzvc855swphwa2
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
       - age:
-        - *pixls
+        - *pixls-univ
+        - *pixls-cadet
         - *space-cadet
         - *sweet
         - *savory
         - *space-port
+        - *pve-basic
