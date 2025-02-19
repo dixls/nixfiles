@@ -122,6 +122,15 @@
           ];
         };
 
+        pve-basic = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = lib.lists.flatten [ 
+            commonModules
+            ./hosts/pve-basic/pve-basic.host.nix 
+            sops-nix.nixosModules.sops
+          ];
+        };
+
         space-port-cosmic = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = lib.lists.flatten [ 
