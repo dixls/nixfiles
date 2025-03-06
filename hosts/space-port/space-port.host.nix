@@ -12,6 +12,15 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+    amdvlk
+  ];
+
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
   hardware.graphics.enable32Bit = true;
 
   # use the newest kernel?
@@ -66,6 +75,8 @@
 
     liquidctl
     cachix
+
+    clinfo
   ];
 
   services.hardware.openrgb = {
