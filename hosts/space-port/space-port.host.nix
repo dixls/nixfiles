@@ -23,6 +23,10 @@
 
   hardware.graphics.enable32Bit = true;
 
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ "kvm-amd" ];
+
   # use the newest kernel?
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

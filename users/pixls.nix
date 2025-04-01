@@ -6,7 +6,7 @@
   users.users.pixls = {
     isNormalUser = true;
     description = "pixls";
-    hashedPasswordFile = config.sops.secrets.pixls-password.path;
+    # hashedPasswordFile = config.sops.secrets.pixls-password.path;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
@@ -14,7 +14,6 @@
     uid = 1000;
     openssh.authorizedKeys.keys = [ 
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL/Svq2HyjLSPdngI4JJLqPlDiQdOpkuvWCoeBUGCkv2 pixls@space-cadet" 
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvrB4mZsRaPE9EESMHnok7pKWh9foXkzsNH3C7n/cGQ pixls@space-port"
     ];
   }; 
 }
