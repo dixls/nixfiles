@@ -6,7 +6,7 @@
   users.users.pixls = {
     isNormalUser = true;
     description = "pixls";
-    # hashedPasswordFile = config.sops.secrets.pixls-password.path;
+    hashedPasswordFile = config.sops.secrets.pixls-password.path;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
