@@ -164,7 +164,8 @@
             commonModules
             ./hosts/space-port/space-port.host.nix
             sops-nix.nixosModules.sops
-            ./gui/plasma
+            #./gui/plasma
+            ./gui/gnome
             lix-module.nixosModules.default
             nix-snapd.nixosModules.default
             {
