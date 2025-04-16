@@ -18,6 +18,17 @@
     jack.enable = true;
   };
 
+  # Let 1pw use the browser
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        firefox
+        chromium
+      '';
+      mode = "0755";
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
