@@ -22,13 +22,14 @@
     totem
   ]);
 
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.appindicator
-    gnomeExtensions.caffeine
-    gnomeExtensions.auto-move-windows
-    gnomeExtensions.move-clock
-    gnomeExtensions.tiling-shell
-    gnomeExtensions.clipboard-indicator
+  environment.systemPackages = with pkgs.gnomeExtensions; [
+    appindicator
+    caffeine
+    auto-move-windows
+    move-clock
+    tiling-shell
+    clipboard-indicator
+    notification-banner-reloaded
   ];
 
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
