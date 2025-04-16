@@ -26,7 +26,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     gnomeExtensions.auto-move-windows
-    gnomeExtensions.moveclock
+    gnomeExtensions.move-clock
     gnomeExtensions.tiling-shell
     gnomeExtensions.clipboard-indicator
   ];
