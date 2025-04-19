@@ -24,8 +24,6 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     pkgs.neovim-unwrapped
-    pkgs._1password-gui
-    pkgs._1password-cli
     pkgs.pyenv
     pkgs.fastfetch
     pkgs.foot

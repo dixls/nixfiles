@@ -30,6 +30,7 @@
     tiling-shell
     clipboard-indicator
     notification-banner-reloaded
+    pop-shell
   ];
 
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
