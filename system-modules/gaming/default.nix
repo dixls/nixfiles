@@ -9,6 +9,9 @@
     protonup-qt
     protontricks
     wine
+
+    cameractrls
+    obs-studio
   ];
   programs.steam = {
     enable = true;

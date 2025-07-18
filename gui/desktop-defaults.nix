@@ -43,7 +43,7 @@
     drivers = [
       pkgs.epson-escpr2
       pkgs.epson-escpr
-      #pkgs.epsonscan2
+      pkgs.epsonscan2
     ];
   };
 

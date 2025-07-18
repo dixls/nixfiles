@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
     enable = true;
     # wayland = true;
   };
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.defaultSession = "gnome";
 
   environment.gnome.excludePackages = (with pkgs; [
@@ -26,11 +26,13 @@
     appindicator
     caffeine
     auto-move-windows
-    move-clock
+    moveclock
     tiling-shell
     clipboard-indicator
     notification-banner-reloaded
-    pop-shell
+    # pop-shell
+    blur-my-shell
+    hot-edge
   ];
 
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
