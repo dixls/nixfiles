@@ -16,6 +16,7 @@
       "sweet-samba" = {};
       "savory-samba" = {};
       "pixls-samba" = {};
+      "gideon-samba" = {};
     };
   };
 
