@@ -8,6 +8,7 @@ keys:
     - &savory age1cze96qzngjf0hks4ftpzh65ggjqwja6jt8uy3sv3gqsy9ldu4deslsmzkw
     - &space-port age1djmsjj6mzfgmad5rtdj7v9uvmrqfn648rxrjsuf0jpwst3e22v0qax7fer
     - &pve-basic age1m0fd5fj39k8k4amaudah3lkgz7m2gphs7tfe0y5ndwg2yzvc855swphwa2
+    - &gideon age168jt0sjtzge0hjh5vaaeazx0n28eus2xht98gf83zwq2p7hks3cs7fmtst
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
@@ -19,3 +20,4 @@ creation_rules:
         - *savory
         - *space-port
         - *pve-basic
+        - *gideon
