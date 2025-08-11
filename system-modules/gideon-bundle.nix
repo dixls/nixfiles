@@ -1,11 +1,12 @@
 _: {
   imports = [
     # ./mastodon
+    # ./nginx
 
   ];
 
   services.plex = {
-    enable = false;
+    enable = true;
     openFirewall = true;
     user = "pixls";
   };
