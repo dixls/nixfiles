@@ -7,7 +7,7 @@
     isNormalUser = true;
     description = "pixls";
     hashedPasswordFile = config.sops.secrets.pixls-password.path;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c"];
     packages = with pkgs; [
     ];
     shell = pkgs.zsh;
