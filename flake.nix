@@ -122,6 +122,15 @@
           ];
         };
 
+        gideon = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = lib.lists.flatten [ 
+            commonModules
+            ./hosts/gideon/gideon.host.nix 
+            sops-nix.nixosModules.sops
+          ];
+        };
+
         pve-basic = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = lib.lists.flatten [ 
