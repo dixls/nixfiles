@@ -9,6 +9,11 @@
     };
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # boot.loader.efi.efiSysMountPoint = "/dev/sda";
   boot.loader.systemd-boot.enable = false;
   boot.loader.grub.enable = true;
