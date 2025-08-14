@@ -9,6 +9,7 @@ keys:
     - &space-port age1djmsjj6mzfgmad5rtdj7v9uvmrqfn648rxrjsuf0jpwst3e22v0qax7fer
     - &pve-basic age1m0fd5fj39k8k4amaudah3lkgz7m2gphs7tfe0y5ndwg2yzvc855swphwa2
     - &gideon age1mkzpzd2vk84na2ycyq3p5ks6lxfk2tej2qwlzgjdf0ml4nhy6p2q5y4spl
+    - &mercymorn age1twccqh6eduz5gq293v2hfjpn5az0pr80leg63rx2wxvsx048dymqf2vu86
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
@@ -21,3 +22,4 @@ creation_rules:
         - *space-port
         - *pve-basic
         - *gideon
+        - *mercymorn

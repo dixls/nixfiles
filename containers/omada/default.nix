@@ -44,8 +44,8 @@
       "TZ" = "Etc/UTC";
     };
     volumes = [
-      "/mnt/Apps/Docker/omada/omada/omada-data:/opt/tplink/EAPController/data:rw"
-      "/mnt/Apps/Docker/omada/omada/omada-logs:/opt/tplink/EAPController/logs:rw"
+      "/home/pixls/omada/omada-data:/opt/tplink/EAPController/data:rw"
+      "/home/pixls/omada/omada-logs:/opt/tplink/EAPController/logs:rw"
     ];
     log-driver = "journald";
     extraOptions = [
