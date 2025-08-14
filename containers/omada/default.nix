@@ -22,6 +22,7 @@
   # Containers
   virtualisation.oci-containers.containers."omada-controller" = {
     image = "mbentley/omada-controller:5.13";
+    autoStart = true;
     environment = {
       "MANAGE_HTTPS_PORT" = "8043";
       "MANAGE_HTTP_PORT" = "8088";
