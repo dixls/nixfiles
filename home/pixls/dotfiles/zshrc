@@ -13,6 +13,9 @@ then
 elif [[ $HOST == gideon ]]
 then
   PROMPT='%(?.%F{green}😎.%F{red}🫗%?)%f %B%F{blue}%1~%f%b %# '
+elif [[ $HOST == mercymorn ]]
+then
+  PROMPT='%(?.%F{green}🎀.%F{red}🫗%?)%f %B%F{blue}%1~%f%b %# '
 else
   PROMPT='%(?.%F{green}💀.%F{red}☠️%?)%f %B%F{blue}%1~%f%b %# '
 fi

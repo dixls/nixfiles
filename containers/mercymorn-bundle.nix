@@ -3,6 +3,6 @@
     # ./mastodon
     # ./bluesky
     # ./httpecho.nix # Basically just to test podman is working
-    # ./omada
+    ./omada
   ];
 }
