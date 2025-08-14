@@ -122,6 +122,15 @@
           ];
         };
 
+        mercymorn = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = lib.lists.flatten [ 
+            commonModules
+            ./hosts/mercymorn/mercymorn.host.nix 
+            sops-nix.nixosModules.sops
+          ];
+        };
+
         gideon = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = lib.lists.flatten [ 
