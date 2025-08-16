@@ -1,7 +1,8 @@
 {config, pkgs, inputs, ...}: {
   imports = [
     ./omada
-    ./gluetun
+    # ./gluetun
+    # ./qbittorrent
     # ./servarr
   ];
 }

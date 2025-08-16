@@ -2,6 +2,25 @@
 { config, pkgs, lib, ... }:
 
 {
+  networking = {
+    firewall = {
+      allowedUDPPorts = [ 6881 19810 ];
+      allowedTCPPorts = [
+        8112
+        6881
+        58846
+        8989
+        7878
+        8686
+        8787
+        9696
+        8191
+        6767
+        8082
+      ];
+    };
+  };
+
   # Containers
   virtualisation.oci-containers.containers."gluetun" = {
     image = "qmcgaw/gluetun";

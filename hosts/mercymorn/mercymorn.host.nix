@@ -37,14 +37,14 @@
 
   services.openssh.enable = true;
 
-  fileSystems."/mnt/snack-pool" = {
-    device = "//192.168.1.6/snack-pool";
-    fsType = "cifs";
-    options = [
-      "x-systemd.automount" "noauto"
-      "credentials=${config.sops.secrets."mercymorn-samba".path}"
-    ];
-  };
+  # fileSystems."/mnt/snack-pool" = {
+  #   device = "//192.168.1.6/snack-pool";
+  #   fsType = "cifs";
+  #   options = [
+  #     "x-systemd.automount" "noauto"
+  #     "credentials=${config.sops.secrets."mercymorn-samba".path}"
+  #   ];
+  # };
 
   networking = {
     networkmanager.enable = false;
