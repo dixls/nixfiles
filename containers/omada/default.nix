@@ -15,7 +15,22 @@
 
   # Enable container name DNS for non-default Podman networks.
   # https://github.com/NixOS/nixpkgs/issues/226365
-  networking.firewall.interfaces."podman+".allowedUDPPorts = [ 53 ];
+  networking = {
+    firewall = {
+      interfaces."podman+".allowedUDPPorts = [ 53 ];
+      allowedUDPPorts = [ 29810 19810 ];
+      allowedTCPPorts = [
+        8088
+        8043
+        29811
+        29812
+        29813
+        29814
+        29815
+        29816
+      ];
+    };
+  };
 
   virtualisation.oci-containers.backend = "podman";
 
@@ -40,7 +55,7 @@
       "SHOW_SERVER_LOGS" = "true";
       "SSL_CERT_NAME" = "tls.crt";
       "SSL_KEY_NAME" = "tls.key";
-      "TZ" = "Etc/UTC";
+      "TZ" = "etc/UTC";
     };
     volumes = [
       "/home/pixls/omada/omada-data:/opt/tplink/EAPController/data:rw"
