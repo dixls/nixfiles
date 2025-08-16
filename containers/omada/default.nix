@@ -15,18 +15,32 @@
 
   # Enable container name DNS for non-default Podman networks.
   # https://github.com/NixOS/nixpkgs/issues/226365
-  networking.firewall.interfaces."podman+".allowedUDPPorts = [ 53 ];
+  networking = {
+    firewall = {
+      interfaces."podman+".allowedUDPPorts = [ 53 ];
+      allowedUDPPorts = [ 29810 19810 ];
+      allowedTCPPorts = [
+        8088
+        8043
+        29811
+        29812
+        29813
+        29814
+        29815
+        29816
+      ];
+    };
+  };
 
   virtualisation.oci-containers.backend = "podman";
 
   # Containers
   virtualisation.oci-containers.containers."omada-controller" = {
-    image = "mbentley/omada-controller:5.13";
+    image = "mbentley/omada-controller:latest";
     autoStart = true;
     environment = {
       "MANAGE_HTTPS_PORT" = "8043";
       "MANAGE_HTTP_PORT" = "8088";
-      "PGID" = "508";
       "PORTAL_HTTPS_PORT" = "8843";
       "PORTAL_HTTP_PORT" = "8088";
       "PORT_ADOPT_V1" = "29812";
@@ -37,12 +51,11 @@
       "PORT_RTTY" = "29816";
       "PORT_TRANSFER_V2" = "29815";
       "PORT_UPGRADE_V1" = "29813";
-      "PUID" = "508";
       "SHOW_MONGODB_LOGS" = "false";
       "SHOW_SERVER_LOGS" = "true";
       "SSL_CERT_NAME" = "tls.crt";
       "SSL_KEY_NAME" = "tls.key";
-      "TZ" = "Etc/UTC";
+      "TZ" = "etc/UTC";
     };
     volumes = [
       "/home/pixls/omada/omada-data:/opt/tplink/EAPController/data:rw"
