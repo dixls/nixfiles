@@ -18,6 +18,7 @@
       "pixls-samba" = {};
       "gideon-samba" = {};
       "mercymorn-samba" = {};
+      "harrowhark-samba" = {};
       "qbittorrent" = {};
       "pia-username" = {};
       "pia-password" = {};

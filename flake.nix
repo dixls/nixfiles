@@ -131,6 +131,15 @@
           ];
         };
 
+        harrowhark = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = lib.lists.flatten [ 
+            commonModules
+            ./hosts/harrowhark/harrowhark.host.nix 
+            sops-nix.nixosModules.sops
+          ];
+        };
+
         gideon = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = lib.lists.flatten [ 
