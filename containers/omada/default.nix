@@ -21,12 +21,11 @@
 
   # Containers
   virtualisation.oci-containers.containers."omada-controller" = {
-    image = "mbentley/omada-controller:5.13";
+    image = "mbentley/omada-controller:latest";
     autoStart = true;
     environment = {
       "MANAGE_HTTPS_PORT" = "8043";
       "MANAGE_HTTP_PORT" = "8088";
-      "PGID" = "508";
       "PORTAL_HTTPS_PORT" = "8843";
       "PORTAL_HTTP_PORT" = "8088";
       "PORT_ADOPT_V1" = "29812";
@@ -37,7 +36,6 @@
       "PORT_RTTY" = "29816";
       "PORT_TRANSFER_V2" = "29815";
       "PORT_UPGRADE_V1" = "29813";
-      "PUID" = "508";
       "SHOW_MONGODB_LOGS" = "false";
       "SHOW_SERVER_LOGS" = "true";
       "SSL_CERT_NAME" = "tls.crt";
