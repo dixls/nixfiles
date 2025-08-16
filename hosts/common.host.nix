@@ -17,6 +17,12 @@
       "savory-samba" = {};
       "pixls-samba" = {};
       "gideon-samba" = {};
+      "mercymorn-samba" = {};
+      "qbittorrent" = {};
+      "pia-username" = {};
+      "pia-password" = {};
+      "radarr-key" = {};
+      "sonarr-key" = {};
     };
   };
 

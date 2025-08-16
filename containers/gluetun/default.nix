@@ -16,7 +16,7 @@
       "VPN_SERVICE_PROVIDER" = "private internet access";
     };
     volumes = [
-      "/home/users/pixls/gluetun:/gluetun:rw"
+      "/home/pixls/gluetun:/gluetun:rw"
     ];
     ports = [
       "8112:8112/tcp"
