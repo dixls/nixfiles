@@ -26,6 +26,8 @@
       "sonarr-key" = {};
       "pia-crl" = {};
       "pia-ca" = {};
+      "pia-network" = {};
+      "pia-port" = {};
     };
   };
 

@@ -2,6 +2,6 @@
 {
   services.qbittorrent = {
     enable = true;
-    torrentingPort = 
+    torrentingPort = config.sops.secrets."pia-port".path;
   };
 }
