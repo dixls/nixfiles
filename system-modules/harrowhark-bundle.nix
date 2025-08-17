@@ -4,7 +4,8 @@ _: {
     # ./nginx
     ./servarr
     ./pia
-    ./qbittorrent
+    # ./qbittorrent
+    ./deluge
   ];
 
 }
