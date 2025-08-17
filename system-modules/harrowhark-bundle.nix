@@ -3,6 +3,7 @@ _: {
     # ./mastodon
     # ./nginx
     ./servarr
+    ./pia
   ];
 
 }
