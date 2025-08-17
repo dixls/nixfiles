@@ -1,5 +1,10 @@
 {config, pkgs, inputs, ...}:
 {
+  networking = {
+    firewall = {
+      allowedTCPPorts = [ 8112 ];
+    };
+  };
   services.deluge = {
     enable = true;
     web.enable = true;

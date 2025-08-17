@@ -30,6 +30,31 @@
       "pia-port" = {};
       "snack-management" = {};
     };
+    templates."pia-config".content = ''
+      client
+      dev tun
+      proto udp
+      remote ${config.sops.placeholder."pia-network"} ${config.sops.placeholder."pia-port"}
+      resolv-retry infinite
+      nobind
+      persist-key
+      persist-tun
+      cipher aes-128-cbc
+      auth sha1
+      tls-client
+      remote-cert-tls server
+  
+      auth-user-pass
+      compress
+      verb 1
+      reneg-sec 0
+
+      <ca>
+      ${config.sops.placeholder."pia-ca"}
+      </ca>
+  
+      disable-occ
+    '';
   };
 
 

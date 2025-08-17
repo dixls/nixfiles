@@ -45,6 +45,11 @@
       url = "github:nix-community/nix-snapd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pia = {
+      url = "github:Fuwn/pia.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
@@ -58,6 +63,7 @@
     lix,
     lix-module,
     nix-snapd,
+    pia,
     ...
   }:
     let
@@ -137,6 +143,7 @@
             commonModules
             ./hosts/harrowhark/harrowhark.host.nix 
             sops-nix.nixosModules.sops
+            pia.nixosModules."x86_64-linux".default
           ];
         };
 

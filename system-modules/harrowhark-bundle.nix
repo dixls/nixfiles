@@ -6,6 +6,7 @@ _: {
     ./pia
     # ./qbittorrent
     ./deluge
+    # ./podman
   ];
 
 }
