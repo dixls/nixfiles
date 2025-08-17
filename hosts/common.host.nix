@@ -24,6 +24,8 @@
       "pia-password" = {};
       "radarr-key" = {};
       "sonarr-key" = {};
+      "pia-crl" = {};
+      "pia-ca" = {};
     };
   };
 

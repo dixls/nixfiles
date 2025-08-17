@@ -1,4 +1,4 @@
-{config, ... }
+{config, pkgs, inputs, ... }:
 {
   services.openvpn.servers = {
     pia = {
@@ -12,7 +12,7 @@
         client
         dev tun
         proto udp
-        remote <redacted> 1198
+        remote ${config.sops.secrets."pia-network".path} ${config.sops.secrets."pia-port".path}
         resolv-retry infinite
         nobind
         persist-key
