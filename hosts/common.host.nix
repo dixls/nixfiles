@@ -28,6 +28,7 @@
       "pia-ca" = {};
       "pia-network" = {};
       "pia-port" = {};
+      "snack-management" = {};
     };
   };
 
