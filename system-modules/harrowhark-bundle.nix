@@ -2,10 +2,10 @@ _: {
   imports = [
     # ./mastodon
     # ./nginx
-    ./servarr
-    ./pia
+    # ./servarr
+    # ./pia
     # ./qbittorrent
-    ./deluge
+    # ./deluge
     # ./podman
   ];
 

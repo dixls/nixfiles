@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, inputs, ... }: {
   # services.pia.enable = true;
 
   # # Hardcoded username and password
@@ -19,8 +19,14 @@
   systemd.services.pia = {
     enable = true;
     description = "pia vpn via openvpn";
+    path = [
+      pkgs.openvpn
+    ];
+    after = [ "network.target" ];
     serviceConfig = {
-      ExecStart = "openvpn --config ${config.sops.templates."pia-config".path} --auth-user-pass ${config.sops.'pia-creds'.path}";
+      ExecStart = ''
+        ${pkgs.openvpn}/bin/openvpn --config ${config.sops.templates."pia-config".path} --auth-user-pass ${config.sops.secrets."pia-creds".path}
+      '';
     };
   };
 }

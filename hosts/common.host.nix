@@ -22,6 +22,7 @@
       "qbittorrent" = {};
       "pia-username" = {};
       "pia-password" = {};
+      "pia-creds" = {};
       "radarr-key" = {};
       "sonarr-key" = {};
       "pia-crl" = {};

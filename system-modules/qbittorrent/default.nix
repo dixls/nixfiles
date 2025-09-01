@@ -4,11 +4,11 @@
     qbittorrent-nox
   ];
 
-  # networking = {
-  #   firewall = {
-  #     allowedTCPPorts = [ 8080 ];
-  #   };
-  # };
+  networking = {
+    firewall = {
+      allowedTCPPorts = [ 8080 ];
+    };
+  };
 
   # services.qbittorrent = {
   #   enable = true;
