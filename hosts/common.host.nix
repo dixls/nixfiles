@@ -139,6 +139,7 @@
     tree
     eza
     pandoc
+    sops
 
     fzf
     fd

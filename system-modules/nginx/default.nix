@@ -21,13 +21,21 @@
         inherit locations;
 
         forceSSL = true;
-        enableACME = true;
+        useACMEHost = "acme.snack.management";
       };
       ortus = port: base {
         "/".proxyPass = "http://192.168.1.6:" + toString(port) + "/";
       };
     in {
       "truenas.snack.management" = ortus 80 // { default = true; };
+      "acme.snack.management" = {
+        forceSSL = true;
+        enableACME = true;
+        serverAliases = ["*.snack.management"];
+        locations."/" = {
+          root = "/var/www";
+        };
+      };
     };
   };
 }
