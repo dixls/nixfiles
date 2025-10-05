@@ -30,6 +30,7 @@
       "pia-network" = {};
       "pia-port" = {};
       "snack-management" = {};
+      "cftoken" = {};
     };
     templates."pia-config".content = ''
       client
