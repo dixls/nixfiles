@@ -68,7 +68,7 @@
         "/".proxyPass = "http://192.168.1.80:" + toString(port) + "/";
       };
     in {
-      "truenas.snack.management" = ortus 443;
+      # "truenas.snack.management" = ortus 443;
       "dockge.snack.management" = john 5001;
       "prowlarr.snack.management" = john 9696;
       "sonarr.snack.management" = john 8989;
@@ -77,7 +77,7 @@
       "audiobooks.snack.management" = john 13378;
       "overseerr.snack.management" = john 5055;
       "plex.snack.management" = gideon 32400;
-      "immich.snack.management" = gideon 2283;
+      # "immich.snack.management" = gideon 2283;
       "hass.snack.management" = hass 8123;
       "music.snack.management" = hass 8095;
       "omada.snack.management" = mercymorn 8043;
@@ -101,6 +101,31 @@
         useACMEHost = "acme.snack.management";
         locations."/" = {
           proxyPass = "https://192.168.1.15:8006";
+        };
+      };
+      "immich.snack.management" = {
+        useACMEHost = "acme.snack.management";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://192.168.1.7:2283";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+          extraConfig = ''
+            client_max_body_size 50000M;
+            proxy_read_timeout   600s;
+            proxy_send_timeout   600s;
+            send_timeout         600s;
+          '';
+        };
+      };
+      "truenas.snack.management" = {
+        forceSSL = true;
+        useACMEHost = "acme.snack.management";
+
+        locations."/" = {
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+          proxyPass = "http://192.168.1.6:80";
         };
       };
     };
