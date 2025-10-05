@@ -4,7 +4,7 @@
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # nixos 23.11
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05"; # nixos 24.05
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # nixos unstable
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
 
@@ -37,7 +37,7 @@
     };
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
