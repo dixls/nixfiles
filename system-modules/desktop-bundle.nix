@@ -10,6 +10,8 @@
     vial
     # kicad
     vlc
+    gimp3
+    darktable
 
     gutenprint
     gutenprintBin
