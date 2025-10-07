@@ -93,6 +93,10 @@
     ];
   };
 
+  services.tailscale = {
+    enable = true;
+  };
+
   security = {
     sudo = {
       enable = lib.mkDefault true;

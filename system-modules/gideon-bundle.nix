@@ -36,6 +36,7 @@
     # mediaLocation = "/mnt/snack-pool/immich/archive";
     mediaLocation = "/media/immich/archive";
     openFirewall = true;
+    accelerationDevices = null;
   };
 
   users.users.immich = {
