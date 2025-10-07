@@ -2,16 +2,11 @@
   description = "pixls' nix config";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # nixos 23.11
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05"; # nixos 24.05
-    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # nixos unstable
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
 
     home-manager = {
       url = "github:nix-community/home-manager"; # unstable
-      # url = "github:nix-community/home-manager/release-24.05";
-      # url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,11 +14,6 @@
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    };
-
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sops-nix = {
@@ -58,7 +48,6 @@
     utils,
     home-manager,
     plasma-manager,
-    nixos-cosmic,
     sops-nix,
     lix,
     lix-module,
@@ -162,33 +151,6 @@
             commonModules
             ./hosts/pve-basic/pve-basic.host.nix 
             sops-nix.nixosModules.sops
-          ];
-        };
-
-        space-port-cosmic = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = lib.lists.flatten [ 
-            commonModules
-            ./hosts/space-port/space-port.host.nix
-            sops-nix.nixosModules.sops
-
-            # These are for Cosmic while it's still being worked on
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [
-                  "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-                ];
-              };
-            }
-            nixos-cosmic.nixosModules.default
-            ./gui/cosmic
-            # ./gui/plasma
-            lix-module.nixosModules.default
-            nix-snapd.nixosModules.default
-            {
-              services.snap.enable = true;
-            }
           ];
         };
 
