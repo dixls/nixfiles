@@ -14,6 +14,7 @@
     uid = 1000;
     openssh.authorizedKeys.keys = [ 
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL/Svq2HyjLSPdngI4JJLqPlDiQdOpkuvWCoeBUGCkv2 pixls@space-cadet" 
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCeh2e5Hl6r4XT7Mmkfm+GJJt8t3UQZMi+V/geiGExr pixls@space-port"
     ];
   }; 
 }

@@ -32,6 +32,7 @@
       "snack-management" = {};
       "cftoken" = {};
     };
+
     templates."pia-config".content = ''
       client
       dev tun
@@ -58,7 +59,6 @@
       disable-occ
     '';
   };
-
 
   nix.gc = {
     automatic = true;
