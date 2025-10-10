@@ -53,22 +53,42 @@
         useACMEHost = "acme.snack.management";
       };
       ortus = port: base {
-        "/".proxyPass = "https://192.168.1.6:" + toString(port) + "/";
+        "/" = {
+          proxyPass = "http://192.168.1.6:" + toString(port) + "/";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
       };
       gideon = port: base {
-        "/".proxyPass = "http://192.168.1.7:" + toString(port) + "/";
+        "/" = {
+          proxyPass = "http://192.168.1.7:" + toString(port) + "/";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
       };
       mercymorn = port: base {
-        "/".proxyPass = "http://192.168.1.12:" + toString(port) + "/";
+        "/" = {
+          proxyPass = "http://192.168.1.12:" + toString(port) + "/";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
       };
       john = port: base {
-        "/".proxyPass = "http://192.168.1.8:" + toString(port) + "/";
+        "/" = {
+          proxyPass = "http://192.168.1.8:" + toString(port) + "/";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
       };
       hass = port: base {
-        "/".proxyPass = "http://192.168.1.80:" + toString(port) + "/";
+        "/" = {
+          proxyPass = "http://192.168.1.80:" + toString(port) + "/";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
       };
     in {
-      # "truenas.snack.management" = ortus 443;
+      "truenas.snack.management" = ortus 80;
       "dockge.snack.management" = john 5001;
       "prowlarr.snack.management" = john 9696;
       "sonarr.snack.management" = john 8989;
@@ -77,7 +97,6 @@
       "audiobooks.snack.management" = john 13378;
       "overseerr.snack.management" = john 5055;
       "plex.snack.management" = gideon 32400;
-      # "immich.snack.management" = gideon 2283;
       "hass.snack.management" = hass 8123;
       "music.snack.management" = hass 8095;
       "omada.snack.management" = mercymorn 8043;
@@ -85,15 +104,14 @@
         forceSSL = true;
         enableACME = true;
         serverAliases = ["*.snack.management"];
-        # locations."/" = {
-        #   root = "/var/www";
-        # };
       };
       "erebos.snack.management" = {
         forceSSL = true;
         useACMEHost = "acme.snack.management";
         locations."/" = {
           proxyPass = "https://192.168.1.5:8006";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
         };
       };
       "snack-can.snack.management" = {
@@ -101,6 +119,8 @@
         useACMEHost = "acme.snack.management";
         locations."/" = {
           proxyPass = "https://192.168.1.15:8006";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
         };
       };
       "immich.snack.management" = {
@@ -116,16 +136,6 @@
             proxy_send_timeout   600s;
             send_timeout         600s;
           '';
-        };
-      };
-      "truenas.snack.management" = {
-        forceSSL = true;
-        useACMEHost = "acme.snack.management";
-
-        locations."/" = {
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-          proxyPass = "http://192.168.1.6:80";
         };
       };
     };
