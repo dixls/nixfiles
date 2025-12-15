@@ -4,7 +4,7 @@
     # steam
     lutris
     bubblewrap
-    boxflat
+    # boxflat
 
     protonup-qt
     protontricks

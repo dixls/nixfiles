@@ -21,15 +21,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lix = {
-      url = "git+https://git.lix.systems/lix-project/lix";
-      flake = false;
-    };
+    # lix = {
+    #   url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
+    #   flake = false;
+    # };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lix-module = {
+    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.lix.follows = "lix";
+    # };
 
     nix-snapd = {
       url = "github:nix-community/nix-snapd";
@@ -38,6 +39,11 @@
 
     pia = {
       url = "github:Fuwn/pia.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -49,10 +55,11 @@
     home-manager,
     plasma-manager,
     sops-nix,
-    lix,
-    lix-module,
+    #lix,
+    #lix-module,
     nix-snapd,
     pia,
+    kwin-effects-forceblur,
     ...
   }:
     let
@@ -71,7 +78,7 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
-          home-manager.backupFileExtension = "backup4";
+          home-manager.backupFileExtension = "backup-1";
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
             inherit inputs;
@@ -84,6 +91,16 @@
       inherit self inputs;
 
       nixosConfigurations = {
+
+        nixpkgs.overlays = [ (final: prev: {
+          inherit (prev.lixPackageSets.latest)
+            nixpkgs-review
+            nix-eval-jobs
+            nix-fast-build
+            colmena;
+        }) ];
+        nix.package = pkgs.lixPackageSets.stable.lix;
+
         default = nixpkgs.lib.nixosSystem {
           # extraSpecialArgs = { inherit inputs; };
           modules = [
@@ -156,13 +173,16 @@
 
         space-port = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
           modules = lib.lists.flatten [ 
             commonModules
             ./hosts/space-port/space-port.host.nix
             sops-nix.nixosModules.sops
-            #./gui/plasma
-            ./gui/gnome
-            lix-module.nixosModules.default
+            ./gui/plasma
+            # ./gui/gnome
+            # lix-module.nixosModules.default
             nix-snapd.nixosModules.default
             {
               services.snap.enable = true;

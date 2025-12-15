@@ -152,7 +152,7 @@
 
     git
     python3
-    postgresql_13
+    postgresql_17
     cmake
     cifs-utils
 

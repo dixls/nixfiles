@@ -9,9 +9,6 @@
         dpi-aware = "yes";
         pad = "5x5";
       };
-      cursor = {
-        color="1A1826 D9E0EE";
-      };
       colors = {
         foreground="E9E0D2"; # Text
         background="08211B"; # Base
@@ -32,6 +29,7 @@
         bright5="F5CABF";    # pink
         bright6="A1CBC0";    # teal
         bright7="59A391";    # Subtext 0
+        cursor="1A1826 D9E0EE";
       };
     };
 

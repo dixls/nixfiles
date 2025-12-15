@@ -18,6 +18,13 @@ vim.opt.hidden=true
 
 vim.g.mapleader = " "
 
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]
+
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')

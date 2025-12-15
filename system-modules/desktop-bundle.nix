@@ -12,6 +12,7 @@
     vlc
     gimp3
     darktable
+    inkscape-with-extensions
 
     gutenprint
     gutenprintBin

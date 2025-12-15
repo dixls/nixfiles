@@ -14,12 +14,12 @@
 
   hardware.graphics.extraPackages = with pkgs; [
     rocmPackages.clr.icd
-    amdvlk
+    # amdvlk
   ];
 
-  hardware.graphics.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
+  # hardware.graphics.extraPackages32 = with pkgs; [
+  #   driversi686Linux.amdvlk
+  # ];
 
   hardware.graphics.enable32Bit = true;
 
@@ -66,8 +66,9 @@
     packages = with pkgs; [
       nerd-fonts.fantasque-sans-mono
       noto-fonts
+      maple-mono.NF
     ];
-    fontconfig.defaultFonts.monospace = ["FantasqueSansMono"];
+    fontconfig.defaultFonts.monospace = ["MapleMonoNF"];
   };
 
   environment.systemPackages = with pkgs; [

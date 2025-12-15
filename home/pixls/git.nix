@@ -16,9 +16,36 @@
     enable = true;
     lfs.enable = true;
 
+    settings = {
+      user = {
+        name = "pixls";
+        email = "dev@snack.supply";
+      };
+
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+      pull.rebase = true;
+
+      aliases = {
+        # common aliases
+        br = "branch";
+        co = "checkout";
+        st = "status";
+        ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
+        ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
+        cm = "commit -m";
+        ca = "commit -am";
+        dc = "diff --cached";
+        amend = "commit --amend -m";
+        please = "push --force-with-lease";
+
+        # aliases for submodule
+        # update = "submodule update --init --recursive";
+        # foreach = "submodule foreach";
+      };
+    };
+
     # TODO replace with your own name & email
-    userName = "pixls";
-    userEmail = "dev@snack.supply";
 
     includes = [
       {
@@ -28,40 +55,17 @@
       }
     ];
 
-    extraConfig = {
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-      pull.rebase = true;
-    };
-
     # signing = {
     #   key = "xxx";
     #   signByDefault = true;
     # };
 
-    delta = {
-      enable = true;
-      options = {
-        features = "side-by-side";
-      };
-    };
+    # delta = {
+    #   enable = true;
+    #   options = {
+    #     features = "side-by-side";
+    #   };
+    # };
 
-    aliases = {
-      # common aliases
-      br = "branch";
-      co = "checkout";
-      st = "status";
-      ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
-      ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
-      cm = "commit -m";
-      ca = "commit -am";
-      dc = "diff --cached";
-      amend = "commit --amend -m";
-      please = "push --force-with-lease";
-
-      # aliases for submodule
-      # update = "submodule update --init --recursive";
-      # foreach = "submodule foreach";
-    };
   };
 }

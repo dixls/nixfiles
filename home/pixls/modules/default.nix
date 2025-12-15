@@ -5,7 +5,7 @@ _: {
 
     ./foot.nix
     # ./gnome.nix
-    # ./plasma.nix
+    ./plasma.nix
     ./tmux.nix
   ];
 }
