@@ -63,6 +63,7 @@
     log-driver = "journald";
     extraOptions = [
       "--network=host"
+      #"--pull=always"
     ];
   };
   systemd.services."podman-omada-controller" = {
