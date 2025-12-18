@@ -21,17 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # lix = {
-    #   url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
-    #   flake = false;
-    # };
-
-    # lix-module = {
-    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.lix.follows = "lix";
-    # };
-
     nix-snapd = {
       url = "github:nix-community/nix-snapd";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +35,10 @@
       url = "github:taj-ny/kwin-effects-forceblur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix";
+    };
   };
 
   outputs = inputs@{
@@ -55,11 +48,10 @@
     home-manager,
     plasma-manager,
     sops-nix,
-    #lix,
-    #lix-module,
     nix-snapd,
     pia,
     kwin-effects-forceblur,
+    authentik-nix,
     ...
   }:
     let
