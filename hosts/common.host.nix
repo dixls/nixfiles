@@ -31,6 +31,7 @@
       "pia-port" = {};
       "snack-management" = {};
       "cftoken" = {};
+      "authentik-env" = {};
     };
 
     templates."pia-config".content = ''
