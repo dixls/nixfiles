@@ -50,7 +50,7 @@
         inherit locations;
 
         forceSSL = true;
-        useACMEHost = "acme.snack.management";
+        useACMEHost = "snack.management";
       };
       ortus = port: base {
         "/" = {
@@ -102,12 +102,12 @@
       "omada.snack.management" = mercymorn 8043;
       "acme.snack.management" = {
         forceSSL = true;
-        enableACME = true;
-        serverAliases = ["*.snack.management"];
+        useACMEHost = "snack.management";
+        #enableACME = true;
       };
       "erebos.snack.management" = {
         forceSSL = true;
-        useACMEHost = "acme.snack.management";
+        useACMEHost = "snack.management";
         locations."/" = {
           proxyPass = "https://192.168.1.5:8006";
           proxyWebsockets = true;
@@ -116,7 +116,7 @@
       };
       "snack-can.snack.management" = {
         forceSSL = true;
-        useACMEHost = "acme.snack.management";
+        useACMEHost = "snack.management";
         locations."/" = {
           proxyPass = "https://192.168.1.15:8006";
           proxyWebsockets = true;
@@ -124,7 +124,7 @@
         };
       };
       "immich.snack.management" = {
-        useACMEHost = "acme.snack.management";
+        useACMEHost = "snack.management";
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://192.168.1.7:2283";
