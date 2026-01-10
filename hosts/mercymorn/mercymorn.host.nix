@@ -29,7 +29,7 @@
 
     # other bundles
     ./../../system-modules/server-bundle.nix
-    #./../../system-modules/sweet-bundle.nix
+    ./../../system-modules/mercymorn-bundle.nix
     ./../../containers/mercymorn-bundle.nix
 
     # ./../../system-modules/mastodon

@@ -1,8 +1,8 @@
 _: {
   imports = [
     # ./mastodon
-    ./nginx
-    #./authentik
+    # ./nginx
+    ./authentik
     # ./servarr
     # ./pia
     # ./qbittorrent
