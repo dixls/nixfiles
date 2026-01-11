@@ -3,6 +3,7 @@
     # ./mastodon
     # ./nginx
     ./podman
+    # ./ocis
 
   ];
 
@@ -23,17 +24,13 @@
   services.audiobookshelf = {
     enable = true;
     openFirewall = true;
-    host = "127.0.0.1";
+    host = "0.0.0.0";
   };
 
   services.immich = {
     enable = true;
     port = 2283;
     host = "0.0.0.0";
-    # user = "root";
-    # database.user = "postgres";
-    # database.name = "immich";
-    # mediaLocation = "/mnt/snack-pool/immich/archive";
     mediaLocation = "/media/immich/archive";
     openFirewall = true;
     accelerationDevices = null;

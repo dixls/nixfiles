@@ -3,7 +3,7 @@
     # ./mastodon
     # ./bluesky
     # ./httpecho.nix # Basically just to test podman is working
-    ./gluetun
+    # ./gluetun
     # ./qbittorrent
     # ./servarr
   ];
