@@ -2,7 +2,7 @@
   imports = [
     # ./mastodon
     # ./nginx
-    # ./podman
+    ./podman
 
   ];
 
