@@ -2,14 +2,16 @@
 {
   services.ocis = {
     enable = true;
-    stateDir = "/ortus/files/ocis";
-    url = "https://cloud.snack.management";
+    address = "0.0.0.0";
+    # stateDir = "/ortus/files/ocis";
+    # url = "https://192.168.1.7:9200";
   };
 
   networking = {
      firewall = {
        allowedTCPPorts = [
          config.services.ocis.port
+         9200
        ];
      };
    };
