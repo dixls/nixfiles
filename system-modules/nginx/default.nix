@@ -123,6 +123,15 @@
           recommendedProxySettings = true;
         };
       };
+      "palamedes.snack.management" = {
+        forceSSL = true;
+        useACMEHost = "snack.management";
+        locations."/" = {
+          proxyPass = "http://192.168.1.16";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
+      };
       "immich.snack.management" = {
         useACMEHost = "snack.management";
         forceSSL = true;
