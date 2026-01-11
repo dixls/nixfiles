@@ -132,6 +132,7 @@
             commonModules
             ./hosts/mercymorn/mercymorn.host.nix 
             sops-nix.nixosModules.sops
+            authentik-nix.nixosModules.default
           ];
         };
 
@@ -142,7 +143,6 @@
             ./hosts/harrowhark/harrowhark.host.nix 
             sops-nix.nixosModules.sops
             pia.nixosModules."x86_64-linux".default
-            authentik-nix.nixosModules.default
           ];
         };
 
