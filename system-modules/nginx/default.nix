@@ -94,7 +94,7 @@
       "sonarr.snack.management" = john 8989;
       "radarr.snack.management" = john 7878;
       "qbittorrent.snack.management" = john 8082;
-      "audiobooks.snack.management" = john 13378;
+      "audiobooks.snack.management" = gideon 8000;
       "overseerr.snack.management" = john 5055;
       "plex.snack.management" = gideon 32400;
       "hass.snack.management" = hass 8123;
