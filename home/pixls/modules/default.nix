@@ -3,9 +3,9 @@ _: {
     ./nvim
     # ./swayfx
 
-    ./foot.nix
+    # ./foot.nix
     # ./gnome.nix
-    ./plasma.nix
+    # ./plasma.nix
     ./tmux.nix
   ];
 }
