@@ -28,11 +28,12 @@
       "OPENVPN_PASSWORD" = config.sops.secrets."pia-password".path;
       "OPENVPN_USER" = config.sops.secrets."pia-username".path;
       "OPENVPN_VERSION" = "2.5";
-      "PRIVATE_INTERNET_ACCESS_VPN_PORT_FORWARDING" = "on";
-      "PRIVATE_INTERNET_ACCESS_VPN_PORT_FORWARDING_STATUS_FILE" = "/gluetun/forwarded_port";
+      "VPN_PORT_FORWARDING_STATUS_FILE" = "/gluetun/forwarded_port";
       "SERVER_REGIONS" = "CA Montreal";
       "VPN_PORT_FORWARDING" = "on";
       "VPN_SERVICE_PROVIDER" = "private internet access";
+      "PGID" = "333";
+      "PUID" = "333";
     };
     volumes = [
       "/home/pixls/gluetun:/gluetun:rw"
@@ -79,12 +80,14 @@
     image = "charlocharlie/qbittorrent-port-forward-file:latest";
     environment = {
       "PORT_FILE" = "/config/forwarded_port";
-      "QBT_ADDR" = "http://192.168.1.12:8080";
+      "QBT_ADDR" = "http://192.168.1.7:8080";
       "QBT_PASSWORD" = config.sops.secrets."qbittorrent".path;
       "QBT_USERNAME" = "pixls";
+      "PGID" = "333";
+      "PUID" = "333";
     };
     volumes = [
-      "/mnt/Apps/Docker/gluetun:/config:ro"
+      "/home/pixls/gluetun:/config:ro"
     ];
     log-driver = "journald";
     extraOptions = [

@@ -13,12 +13,12 @@
     environment = {
       "TZ" = "\"America/New York\"";
       "WEBUI_PORT" = "8082";
-      "PGID" = "1000";
-      "PUID" = "1000";
+      "PGID" = "333";
+      "PUID" = "333";
     };
     volumes = [
-      "/home/pixls/qbittorrent/qBittorrent:/config:rw"
-      "/mnt/snack-pool:/snack-share:rw"
+      "/home/pixls/qBittorrent:/config:rw"
+      "/ortus:/snack-share:rw"
     ];
     dependsOn = [
       "gluetun"
