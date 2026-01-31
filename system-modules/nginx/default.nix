@@ -68,7 +68,7 @@
       };
       mercymorn = port: base {
         "/" = {
-          proxyPass = "http://192.168.1.12:" + toString(port) + "/";
+          proxyPass = "https://192.168.1.12:" + toString(port) + "/";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
