@@ -151,7 +151,7 @@
         forceSSL = true;
         useACMEHost = "snack.management";
         locations."/" = {
-          proxyPass = "http://0.0.0.0:8443";
+          proxyPass = "http://0.0.0.0:8080";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };

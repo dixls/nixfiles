@@ -5,8 +5,10 @@
     enable = true;
     database.passwordFile = config.sops.secrets."keycloak-db-pass".path;
     settings = {
-      hostname = "auth.snack.management";
+      hostname = "https://auth.snack.management";
       hostname-backchannel-dynamic = true;
+      http-enabled = true;
+      http-port = 8080;
     };
   };
 }
