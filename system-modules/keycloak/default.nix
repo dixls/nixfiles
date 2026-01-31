@@ -1,6 +1,9 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
+  sops.secrets."keycloak-db-pass" = {};
+
   services.keycloak = {
     enable = true;
+    database.passwordFile = config.sops.secrets."keycloak-db-pass".path;
     settings = {
       hostname = "auth.snack.management";
       hostname-backchannel-dynamic = true;

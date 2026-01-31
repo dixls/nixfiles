@@ -2,6 +2,8 @@
 { config, pkgs, lib, ... }:
 
 {
+  sops.secrets."qbittorrent" = {};
+
   networking = {
     firewall = {
       allowedTCPPorts = [ 8082 ];
