@@ -154,6 +154,28 @@
           proxyPass = "http://0.0.0.0:8080";
           proxyWebsockets = true;
           recommendedProxySettings = true;
+          extraConfig = ''
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+          '';
+        };
+      };
+      "kuma.snack.management" = {
+        forceSSL = true;
+        useACMEHost = "snack.management";
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:3001";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+          extraConfig = ''
+            proxy_set_header   X-Real-IP $remote_addr;
+            proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header   Host $host;
+            proxy_set_header   Upgrade $http_upgrade;
+            proxy_set_header   Connection "upgrade";
+          '';
         };
       };
     };

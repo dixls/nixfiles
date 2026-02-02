@@ -17,6 +17,7 @@
       hostname-backchannel-dynamic = true;
       http-enabled = true;
       http-port = 8080;
+      proxy-headers = "xforwarded";
     };
   };
 }

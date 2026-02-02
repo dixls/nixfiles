@@ -20,8 +20,6 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  # services.xserver.enable = true;
-
   # Use this to pick which GUI and other bundles
   imports = [
     ./hardware-configuration.nix

@@ -3,6 +3,7 @@ _: {
     # ./mastodon
     ./nginx
     ./keycloak
+    ./kuma
     # ./servarr
     # ./pia
     # ./qbittorrent
