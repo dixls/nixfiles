@@ -7,6 +7,8 @@
 
   ];
 
+  sops.secrets."matrix-synapse-reg-secret" = {};
+
   networking = {
     firewall = {
       allowedTCPPorts = [
@@ -20,6 +22,7 @@
     settings = {
       server_name = "snack.haus";
       public_baseurl = "https://matrix.snack.haus";
+      registration_shared_secret = config.sops.secrets."matrix-synapse-reg-secret".path;
       # enable_registration = true;
       # registrations_require_3pid = [ "email" ];
       listeners = [
