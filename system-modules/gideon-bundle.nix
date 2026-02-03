@@ -15,6 +15,28 @@
     };
   };
 
+  services.matrix-synapse = {
+    enable = true;
+    settings = {
+      server_name = "snack.haus";
+      public_baseurl = "https://matrix.snack.haus";
+      # enable_registration = true;
+      # registrations_require_3pid = [ "email" ];
+      listeners = [
+        {
+          port = 8008;
+          bind_addresses = [ "::1" ];
+          type = "http";
+          tls = false;
+          x_forwarded = true;
+          resources = [
+            { names = [ "client" "federation" ]; compress = true; }
+          ];
+        }
+      ];
+    };
+  };
+
   services.plex = {
     enable = true;
     openFirewall = true;
