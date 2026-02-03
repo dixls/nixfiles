@@ -1,7 +1,8 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-    # ./plex-nginx.nix
+    ./plex-nginx.nix
+    ./synapse-nginx.nix
   ];
 
   networking = {
@@ -96,7 +97,7 @@
       "qbittorrent.snack.management" = john 8082;
       "audiobooks.snack.management" = gideon 8000;
       "overseerr.snack.management" = john 5055;
-      "plex.snack.management" = gideon 32400;
+      # "plex.snack.management" = gideon 32400;
       "hass.snack.management" = hass 8123;
       "music.snack.management" = hass 8095;
       "omada.snack.management" = mercymorn 8043;

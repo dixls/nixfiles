@@ -8,8 +8,7 @@
     http2 = true;
   
     # Provide the ssl cert and key for the vhost
-    sslCertificate = "/https-cert.pem";
-    sslCertificateKey = "/https-key.pem";
+    useACMEHost = "snack.management";
     extraConfig = ''
   
       #Some players don't reopen a socket and playback stops totally instead of resuming after an extended pause
