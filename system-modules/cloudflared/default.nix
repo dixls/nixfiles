@@ -1,6 +1,7 @@
-{ pkgs, inputs, lib, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
-  sops.secrets."snack-management-cftoken" = {};
+  sops.secrets."snack-management-cftunnel" = {};
+  sops.secrets."snack-haus-cftunnel" = {};
 
   services.cloudflared = {
     enable = true;
