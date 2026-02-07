@@ -18,7 +18,6 @@
     enable = true;
     domains = [
       "snack.management"
-      "overseerr.snack.management"
       "acme.snack.management"
     ];
     apiTokenFile = config.sops.secrets."cftoken".path;
