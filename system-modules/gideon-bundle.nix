@@ -8,6 +8,7 @@
   ];
 
   sops.secrets."matrix-synapse-reg-secret" = {};
+  sops.secrets."snack-management-cftoken" = {};
 
   networking = {
     firewall = {
@@ -22,8 +23,8 @@
   services.cloudflared = {
     enable = true;
     tunnels = {
-      "34066069-112a-41e4-8ffc-4153806a30e8" = {
-        credentialsFile = "${config.sops.secrets.matrix-cftoken.path}";
+      "e0746225-5593-46ba-937f-2b03c09d2409" = {
+        credentialsFile = "${config.sops.secrets.snack-management-cftoken.path}";
         default = "http_status:404";
       };
     };

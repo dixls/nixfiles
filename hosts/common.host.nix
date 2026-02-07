@@ -144,6 +144,7 @@
     eza
     pandoc
     sops
+    cloudflared
 
     fzf
     fd
