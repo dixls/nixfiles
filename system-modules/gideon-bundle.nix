@@ -17,6 +17,18 @@
     };
   };
 
+  sops.secrets."matrix-cftoken" = {};
+
+  services.cloudflared = {
+    enable = true;
+    tunnels = {
+      "34066069-112a-41e4-8ffc-4153806a30e8" = {
+        credentialsFile = "${config.sops.secrets.matrix-cftoken.path}";
+        default = "http_status:404";
+      };
+    };
+  };
+
   services.matrix-synapse = {
     enable = true;
     settings = {
