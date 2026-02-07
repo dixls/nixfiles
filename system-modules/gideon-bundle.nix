@@ -17,13 +17,13 @@
     };
   };
 
-  sops.secrets."snack-haus-cftunnel" = {};
+  sops.secrets."gideon-cftunnel" = {};
 
   services.cloudflared = {
     enable = true;
     tunnels = {
       "373c7f12-77eb-4e1f-b28b-dadcd2f0e4f8" = {
-        credentialsFile = "${config.sops.secrets.snack-haus-cftunnel.path}";
+        credentialsFile = "${config.sops.secrets.gideon-cftunnel.path}";
         default = "http_status:404";
       };
     };
