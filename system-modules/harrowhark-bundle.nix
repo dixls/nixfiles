@@ -4,6 +4,7 @@
     ./nginx
     ./keycloak
     ./kuma
+    ./pocket-id
     # ./servarr
     # ./pia
     # ./qbittorrent
