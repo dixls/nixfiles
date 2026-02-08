@@ -2,7 +2,7 @@
   imports = [
     # ./mastodon
     ./nginx
-    ./keycloak
+    # ./keycloak
     ./kuma
     ./pocket-id
     # ./servarr

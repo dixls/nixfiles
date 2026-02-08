@@ -147,33 +147,32 @@
           '';
         };
       };
-      "auth.snack.management" = {
+      # "auth.snack.management" = {
+      #   forceSSL = true;
+      #   useACMEHost = "snack.management";
+      #   locations."/" = {
+      #     proxyPass = "http://0.0.0.0:8080";
+      #     proxyWebsockets = true;
+      #     recommendedProxySettings = true;
+      #     extraConfig = ''
+      #       proxy_set_header Host $host;
+      #       proxy_set_header X-Real-IP $remote_addr;
+      #       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      #       proxy_set_header X-Forwarded-Proto https;
+      #     '';
+      #   };
+      # };
+      "id.snack.management" = {
         forceSSL = true;
         useACMEHost = "snack.management";
         locations."/" = {
-          proxyPass = "http://0.0.0.0:8080";
+          proxyPass = "http://0.0.0.0:1411";
           proxyWebsockets = true;
           recommendedProxySettings = true;
           extraConfig = ''
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-          '';
-        };
-      };
-      "auth2.snack.management" = {
-        forceSSL = true;
-        useACMEHost = "snack.management";
-        locations."/" = {
-          proxyPass = "http://0.0.0.0:8080";
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-          extraConfig = ''
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
+            proxy_busy_buffers_size   512k;
+            proxy_buffers   4 512k;
+            proxy_buffer_size   256k;
           '';
         };
       };
