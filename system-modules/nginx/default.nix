@@ -2,7 +2,7 @@
 {
   imports = [
     ./plex-nginx.nix
-    ./synapse-nginx.nix
+    # ./synapse-nginx.nix
   ];
 
   networking = {
