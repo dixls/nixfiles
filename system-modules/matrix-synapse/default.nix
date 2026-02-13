@@ -72,16 +72,21 @@ in {
     ];
   };
 
+  sops.secrets."snack-haus_cert" = {};
+  sops.secrets."snack-haus_pk" = {};
+
   services.nginx.virtualHosts.${domain} = {
-    enableACME = true;
     forceSSL = true;
+    sslCertificate = config.sops.secrets."snack-haus_cert".path;
+    sslCertificateKey = config.sops.secrets."snack-haus_pk".path;
     locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
     locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
   };
 
   services.nginx.virtualHosts.${matrixDomain} = {
-    enableACME = true;
     forceSSL = true;
+    sslCertificate = config.sops.secrets."snack-haus_cert".path;
+    sslCertificateKey = config.sops.secrets."snack-haus_pk".path;
     locations."/" = {
       proxyPass = "http://127.0.0.1:8008";
       extraConfig = ''
