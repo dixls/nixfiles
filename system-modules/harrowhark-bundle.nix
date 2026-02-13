@@ -5,6 +5,7 @@
     # ./keycloak
     ./kuma
     ./pocket-id
+    ./matrix-synapse
     # ./servarr
     # ./pia
     # ./qbittorrent
