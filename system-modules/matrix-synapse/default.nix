@@ -72,8 +72,14 @@ in {
     ];
   };
 
-  sops.secrets."snack-haus_cert" = {};
-  sops.secrets."snack-haus_pk" = {};
+  sops.secrets."snack-haus_cert" = {
+    owner = config.users.users.nginx.name;
+    group = config.users.users.nginx.group;
+  };
+  sops.secrets."snack-haus_pk" = {
+    owner = config.users.users.nginx.name;
+    group = config.users.users.nginx.group;
+  };
 
   services.nginx.virtualHosts.${domain} = {
     forceSSL = true;

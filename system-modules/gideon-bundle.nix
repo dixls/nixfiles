@@ -3,6 +3,7 @@
     # ./mastodon
     # ./nginx
     ./podman
+    ./matrix-synapse
     # ./ocis
 
   ];
