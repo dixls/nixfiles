@@ -4,12 +4,16 @@
   networking = {
     firewall = {
       allowedTCPPorts = [
-        8080
+        80
       ];
     };
   };
   
   sops.secrets."nextcloud-admin-pass" = {};
+
+  services.nginx = {
+    enable = false;
+  };
 
   services.nextcloud = {
     enable = true;
@@ -21,10 +25,16 @@
     database.createLocally = true;
     config = {
       dbtype = "pgsql";
+      adminuser = "admin";
       adminpassFile = config.sops.secrets."nextcloud-admin-pass".path;
       defaultPhoneRegion = "US";
     };
+    extraApps = with config.services.nextcloud.package.packages.apps; {
+      inherit user_oidc calendar contacts;
+    };
     settings = {
+      trustedProxies = [ "192.168.1.9" ];
+      trustedDomains = [ "192.168.1.7:80" ];
       enabledPreviewProviders = [
         "OC\\Preview\\BMP"
         "OC\\Preview\\GIF"
