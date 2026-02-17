@@ -1,4 +1,7 @@
 {config, lib, pkgs, ...}:
+let
+  domain = "cloud.snack.management";
+in 
 {
 
   networking = {
@@ -10,15 +13,25 @@
   };
   
   sops.secrets."nextcloud-admin-pass" = {};
+  sops.secrets."snack-management_cert" = {
+    owner = config.users.users.nginx.name;
+    group = config.users.users.nginx.group;
+  };
+  sops.secrets."snack-management_pk" = {
+    owner = config.users.users.nginx.name;
+    group = config.users.users.nginx.group;
+  };
 
-  services.nginx = {
-    enable = false;
+  services.nginx.virtualHosts.${domain} = {
+    sslCertificate = config.sops.secrets."snack-management_cert".path;
+    sslCertificateKey = config.sops.secrets."snack-management_pk".path;
+    forceSSL = true;
   };
 
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud32;
-    hostName = "cloud.snack.management";
+    hostName = domain;
     https = true;
     configureRedis = true;
     maxUploadSize = "1G";
