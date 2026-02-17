@@ -23,6 +23,19 @@ in {
       public_baseurl = "https://${matrixDomain}";
       listeners = [
         {
+          port = 8448;
+          bind_addresses = [ "::1" ];
+          type = "http";
+          tls = false;
+          x_forwarded = false;
+          resources = [
+            { 
+              names = [ "federation" ];
+              compress = false;
+            }
+          ];
+        }
+        {
           port = 8008;
           bind_addresses = [ "::1" ];
           type = "http";
@@ -49,7 +62,8 @@ in {
 
       max_upload_size_mib = 100;
       url_preview_enabled = true;
-      enable_registration = false;
+      enable_registration = true;
+      registration_requires_token = true;
       enable_metrics = false;
       registration_shared_secret_path = "/var/lib/matrix-synapse/registration_secret";
 

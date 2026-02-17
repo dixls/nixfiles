@@ -1,11 +1,11 @@
 {pkgs, lib, config, ...}: {
   imports = [
     # ./mastodon
-    # ./nginx
     ./podman
     ./matrix-synapse
     # ./ocis
     ./nextcloud
+    ./jellyfin
   ];
 
   sops.secrets."matrix-synapse-reg-secret" = {};
