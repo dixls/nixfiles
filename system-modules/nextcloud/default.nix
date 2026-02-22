@@ -8,30 +8,40 @@ in
     firewall = {
       allowedTCPPorts = [
         80
+        443
       ];
     };
   };
-  
-  sops.secrets."nextcloud-admin-pass" = {};
-  sops.secrets."snack-management_cert" = {
-    owner = config.users.users.nginx.name;
-    group = config.users.users.nginx.group;
-  };
-  sops.secrets."snack-management_pk" = {
-    owner = config.users.users.nginx.name;
-    group = config.users.users.nginx.group;
-  };
+   
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "admin+acme@snack.management";
+    certs."snack.management" = {
+      domain = "cloud.snack.management";
+      dnsProvider = "cloudflare";
+      group = "nginx";
+      environmentFile = config.sops.secrets."snack-management".path;
+      dnsPropagationCheck = true;
+    };
+  }; 
 
-  services.nginx.virtualHosts.${domain} = {
-    sslCertificate = config.sops.secrets."snack-management_cert".path;
-    sslCertificateKey = config.sops.secrets."snack-management_pk".path;
-    forceSSL = true;
+  sops.secrets."nextcloud-admin-pass" = {};
+
+  services.nginx = {
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHosts."cloud.snack.management" = {
+      forceSSL = true;
+      useACMEHost = "snack.management";
+    };
   };
 
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud32;
-    hostName = domain;
+    hostName = "cloud.snack.management";
     https = true;
     configureRedis = true;
     maxUploadSize = "1G";
@@ -47,7 +57,7 @@ in
     };
     settings = {
       trustedProxies = [ "192.168.1.9" ];
-      trustedDomains = [ "192.168.1.7:80" ];
+      trustedDomains = [ "192.168.1.7:80" "192.168.1.7:443"];
       enabledPreviewProviders = [
         "OC\\Preview\\BMP"
         "OC\\Preview\\GIF"

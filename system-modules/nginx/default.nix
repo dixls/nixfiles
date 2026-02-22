@@ -99,6 +99,7 @@
       "overseerr.snack.management" = john 5055;
       
       "audiobooks.snack.management" = gideon 8000;
+      "paperless.snack.management" = gideon 28981;
       "immich.snack.management" = {
         useACMEHost = "snack.management";
         forceSSL = true;

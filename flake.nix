@@ -36,11 +36,6 @@
       url = "github:nix-community/nix-snapd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    pia = {
-      url = "github:Fuwn/pia.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     
     kwin-effects-forceblur = {
       url = "github:taj-ny/kwin-effects-forceblur";
@@ -58,7 +53,6 @@
     #lix,
     #lix-module,
     nix-snapd,
-    pia,
     kwin-effects-forceblur,
     ...
   }:
@@ -149,7 +143,6 @@
             commonModules
             ./hosts/harrowhark/harrowhark.host.nix 
             sops-nix.nixosModules.sops
-            pia.nixosModules."x86_64-linux".default
           ];
         };
 

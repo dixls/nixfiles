@@ -6,6 +6,7 @@
     # ./ocis
     ./nextcloud
     ./jellyfin
+    ./paperless
   ];
 
   sops.secrets."matrix-synapse-reg-secret" = {};
