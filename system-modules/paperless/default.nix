@@ -8,9 +8,31 @@
     };
   };
 
-  secrets.sops."paperless-pocket-id-secret" = {
-    owner = ;
-    group = ;
+  sops = {
+    secrets."paperless-pocket-id-secret" = {};
+    templates."paperless-oidc".content = ''
+        {
+          "openid_connect": {
+            "SCOPE": [
+              "openid",
+              "profile",
+              "email"
+            ],
+            "OAUTH_PKCE_ENABLED": true,
+            "APPS": [
+              {
+                "provider_id": "pocket-id",
+                "name": "Pocket-ID",
+                "client_id": "e95134e4-1cdb-4d9d-a8c3-9a46a430af42",
+                "secret": "${config.sops.placeholder."paperless-pocket-id-secret"}",
+                "settings": {
+                  "server_url": "https://id.snack.management"
+                }
+              }
+            ]
+          }
+        }
+    '';
   };
 
   services.paperless = {
@@ -29,23 +51,7 @@
       };
       PAPERLESS_URL = "https://paperless.snack.management";
       PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
-      PAPERLESS_SOCIALACCOUNT_PROVIDERS = {
-        openid_connect = {
-          SCOPE = [ "openid" "profile" "email" ];
-          OAUTH_PKCE_ENABLED = true;
-          APPS = [
-            {
-              provider_id = "pocket-id";
-              name = "Pocket-ID";
-              client_id = "e95134e4-1cdb-4d9d-a8c3-9a46a430af42";
-              secret = ${config.sops.secrets."paperless-pocket-id-secret"};
-              settings = {
-                server_url = "https://id.snack.management";
-              };
-            }
-          ];
-        };
-      };
+      PAPERLESS_SOCIALACCOUNT_PROVIDERS = config.sops.templates."paperless-oidc".content;
     };
   };
 }
