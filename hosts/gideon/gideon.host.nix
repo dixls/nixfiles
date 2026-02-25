@@ -42,6 +42,11 @@
 
   services.openssh.enable = true;
 
+  fileSystems."/mnt/files" = {
+    device = "192.168.1.6:/mnt/snack-pool/subvol-101-disk-0/files";
+    fsType = "nfs";
+  };
+
   fileSystems."/mnt/snack-pool" = {
     device = "//192.168.1.6/subvol-101-disk-0";
     fsType = "cifs";

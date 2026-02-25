@@ -106,6 +106,8 @@
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.supportedFilesystems = [ "nfs" ];
+
   networking.networkmanager.enable = lib.mkDefault true;
   networking.defaultGateway = "192.168.1.1";
   networking.nameservers = ["192.168.1.1"];

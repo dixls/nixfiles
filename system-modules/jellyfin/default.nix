@@ -11,7 +11,7 @@
   };
 
   users.users.jellyfin = {
-    uid = 333;
+    uid = 990;
   };
 
   fileSystems."/jelly-media" = {
@@ -20,7 +20,7 @@
     options = [
       "x-systemd.automount" "noauto"
       "credentials=${config.sops.secrets."gideon-samba".path}"
-      "uid=333"
+      "uid=990"
     ];
   };
 }
