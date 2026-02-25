@@ -1,9 +1,7 @@
 {pkgs, lib, config, ...}: {
   imports = [
-    # ./mastodon
     ./podman
     ./matrix-synapse
-    # ./ocis
     ./nextcloud
     ./jellyfin
     ./paperless

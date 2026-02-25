@@ -1,7 +1,4 @@
 {config, lib, pkgs, ...}:
-let
-  domain = "cloud.snack.management";
-in 
 {
 
   networking = {
@@ -12,31 +9,8 @@ in
       ];
     };
   };
-   
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "admin+acme@snack.management";
-    certs."snack.management" = {
-      domain = "cloud.snack.management";
-      dnsProvider = "cloudflare";
-      group = "nginx";
-      environmentFile = config.sops.secrets."snack-management".path;
-      dnsPropagationCheck = true;
-    };
-  }; 
 
   sops.secrets."nextcloud-admin-pass" = {};
-
-  services.nginx = {
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    virtualHosts."cloud.snack.management" = {
-      forceSSL = true;
-      useACMEHost = "snack.management";
-    };
-  };
 
   services.nextcloud = {
     enable = true;
