@@ -5,6 +5,7 @@
     ./nextcloud
     ./jellyfin
     ./paperless
+    ./xmpp
   ];
 
   sops.secrets."matrix-synapse-reg-secret" = {};
