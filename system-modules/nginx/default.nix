@@ -122,6 +122,9 @@
           proxyPass = "http://192.168.1.7:80";
           proxyWebsockets = true;
           recommendedProxySettings = true;
+          extraConfig = ''
+            client_max_body_size 50G;
+          '';
         };
         locations."/.well-known/carddav" = {
           extraConfig = ''
@@ -135,7 +138,7 @@
         };
         locations."^~ /.well-known" = {
           extraConfig = ''
-            return 301 $scheme://$host/index.php$uri;
+            return 301 $scheme://$host/index.php$request_uri;
           '';
         };
       };
