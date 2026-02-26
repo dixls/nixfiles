@@ -12,6 +12,21 @@
 
   sops.secrets."nextcloud-admin-pass" = {};
 
+  fileSystems."/snack-files" = {
+    device = "//192.168.1.6/files";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount" "noauto"
+      "credentials=${config.sops.secrets."gideon-samba".path}"
+      "uid=nextcloud,gid=nextcloud,file_mode=0777,dir_mode=0777"
+    ];
+  };
+
+  fileSystems."/mnt/snack-files" = {
+    device = "192.168.1.6:/mnt/snack-pool/subvol-101-disk-0/files";
+    fsType = "nfs";
+  };
+
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud32;
@@ -19,6 +34,7 @@
     https = true;
     configureRedis = true;
     maxUploadSize = "1G";
+    datadir = "/mnt/snack-files/nextcloud";
     database.createLocally = true;
     config = {
       dbtype = "pgsql";
@@ -45,6 +61,7 @@
         "OC\\Preview\\XBitmap"
         "OC\\Preview\\HEIC"
       ];
+      allow_local_remote_servers = true;
     };
   };
 }
