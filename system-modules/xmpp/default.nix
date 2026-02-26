@@ -55,7 +55,7 @@ in
     allowRegistration = false;
   };
 
-  users.groups.certs.members = ["prosidy" "nginx" "acme"];
+  users.groups.certs.members = ["prosidy" "nginx" "acme" ];
 
   sops.secrets."snack-haus" = {};
 
@@ -72,6 +72,6 @@ in
     };
   };
   
-  networking.firewall.allowedTCPPorts = [ 5222 5223 ];
+  networking.firewall.allowedTCPPorts = [ 5222 5223 5280 5281 ];
 
 }
