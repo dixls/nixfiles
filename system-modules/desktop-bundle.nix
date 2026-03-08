@@ -20,6 +20,9 @@
     prusa-slicer
 
     hugo
+
+    evtest
+    linuxConsoleTools
   ];
 
   imports = [
@@ -34,6 +37,11 @@
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
+
+#   services.squeezelite = {
+#     enable = true;
+#     # pulseAudio = true;
+#   };
 
   # vial udev rule
   # boxflat udev rule?

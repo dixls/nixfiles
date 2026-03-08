@@ -1,5 +1,9 @@
 { pkgs, inputs, lib, ... }:
 {
+  imports = [
+    # ./gx100.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     # steam
     lutris
@@ -27,6 +31,20 @@
       enable32Bit = true;
     };
   };
+
+  # boot.kernelParams = [
+  #   "usbhid.quirks=0x04b0:0x5750:0x40000000"
+  # ];
+
+  boot.initrd.kernelModules = ["usbhid" "joydev" "xpad"];
+
+  services.udev.extraHwdb = ''
+evdev:name:GX100 Shifter:*
+  ID_INPUT_JOYSTICK=1
+
+evdev:name:Handbrake:*
+  ID_INPUT_JOYSTICK=1
+  '';
   
   services.udev.packages = [
     (pkgs.writeTextFile {
@@ -43,6 +61,25 @@
         SUBSYSTEM=="misc", KERNEL=="uinput", OPTIONS+="static_node=uinput", TAG+="uaccess"
       '';
       destination = "/etc/udev/rules.d/99-boxflat.rules";
+    })
+    (pkgs.writeTextFile {
+      name = "alix-udev-rule";
+      text = ''
+        # uinput?
+        KERNEL=="uinput", MODE="0660", GROUP="input", TAG+="uaccess"
+
+
+        # Handbrake
+        KERNEL=="hidraw*", ATTRS{idVendor}=="0483"\
+        ATTRS{idProduct}=="5757", MODE="0666", TAG+="uaccess"\
+        ENV{ID_INPUT_JOYSTICK}="1"
+        
+        # GX100
+        KERNEL=="hidraw*", ATTRS{idVendor}=="04b0"\
+        MODE="0666", TAG+="uaccess"\
+        ENV{ID_INPUT_JOYSTICK}="1"
+      '';
+      destination = "/etc/udev/rules.d/99-alixsim.rules";
     })
   ];
 }

@@ -41,6 +41,11 @@
       url = "github:taj-ny/kwin-effects-forceblur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    protopedal = {
+      url = "github:ccalhoun1999/protopedal-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
@@ -54,6 +59,7 @@
     #lix-module,
     nix-snapd,
     kwin-effects-forceblur,
+    protopedal,
     ...
   }:
     let
