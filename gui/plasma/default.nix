@@ -31,7 +31,7 @@
     pkgs.wayland-utils # Wayland utilities
     pkgs.wl-clipboard # Command-line copy/paste utilities for Wayland
 
-    inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default # Wayland
+    # inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default # Wayland
   ];
 
   nixpkgs.config.qt6 = {

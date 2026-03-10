@@ -37,10 +37,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    kwin-effects-forceblur = {
-      url = "github:taj-ny/kwin-effects-forceblur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # kwin-effects-forceblur = {
+    #   url = "github:taj-ny/kwin-effects-forceblur";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     protopedal = {
       url = "github:ccalhoun1999/protopedal-flake";
@@ -58,7 +58,7 @@
     #lix,
     #lix-module,
     nix-snapd,
-    kwin-effects-forceblur,
+    # kwin-effects-forceblur,
     protopedal,
     ...
   }:

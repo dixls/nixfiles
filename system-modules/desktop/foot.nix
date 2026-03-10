@@ -1,7 +1,7 @@
 {pkgs, lib, ...}: {
   programs.foot = {
     enable = true;
-    server.enable = true;
+    enableZshIntegration = true;
     settings = {
       main = {
         term = "xterm-256color";
