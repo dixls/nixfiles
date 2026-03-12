@@ -29,7 +29,7 @@
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud32;
+    package = pkgs.nextcloud33;
     hostName = "cloud.snack.management";
     https = true;
     configureRedis = true;
@@ -40,12 +40,12 @@
       dbtype = "pgsql";
       adminuser = "admin";
       adminpassFile = config.sops.secrets."nextcloud-admin-pass".path;
-      defaultPhoneRegion = "US";
     };
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit user_oidc calendar contacts;
     };
     settings = {
+      default_phone_region = "US";
       trustedProxies = [ "192.168.1.9" ];
       trustedDomains = [ "192.168.1.7:80" "192.168.1.7:443"];
       enabledPreviewProviders = [

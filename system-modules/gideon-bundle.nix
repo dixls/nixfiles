@@ -40,6 +40,7 @@
     enable = true;
     openFirewall = true;
     host = "0.0.0.0";
+    user = config.services.immich.user;
   };
 
   services.immich = {
@@ -63,9 +64,9 @@
     device = "//192.168.1.6/subvol-101-disk-0";
     fsType = "cifs";
     options = [
-      "x-systemd.automount" "noauto"
+      "x-systemd.automount" "noauto" "user"
       "credentials=${config.sops.secrets."gideon-samba".path}"
-      "uid=222"
+      "uid=222,file_mode=0777,dir_mode=0777"
     ];
   };
 }
