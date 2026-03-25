@@ -98,9 +98,9 @@
       "radarr.snack.management" = john 7878;
       "qbittorrent.snack.management" = john 8082;
       "overseerr.snack.management" = john 5055;
-      "calibre.snack.management" = john 8083;
       
       "audiobooks.snack.management" = gideon 8000;
+      "calibre.snack.management" = gideon 8083;
       "paperless.snack.management" = gideon 28981;
       "immich.snack.management" = {
         useACMEHost = "snack.management";
