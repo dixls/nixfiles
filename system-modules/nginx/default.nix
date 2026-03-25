@@ -29,6 +29,7 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "admin+acme@snack.management";
+    #defaults.dnsResolver = "jay.ns.cloudflare.com.:53";
     certs."snack.management" = {
       domain = "*.snack.management";
       dnsProvider = "cloudflare";
