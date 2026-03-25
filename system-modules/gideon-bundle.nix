@@ -6,6 +6,7 @@
     ./jellyfin
     ./paperless
     ./xmpp
+    ./calibre
   ];
 
   sops.secrets."matrix-synapse-reg-secret" = {};
@@ -64,7 +65,7 @@
     device = "//192.168.1.6/subvol-101-disk-0";
     fsType = "cifs";
     options = [
-      "x-systemd.automount" "noauto" "user"
+      "x-systemd.automount" "noauto" "user" "nobrl"
       "credentials=${config.sops.secrets."gideon-samba".path}"
       "uid=222,file_mode=0777,dir_mode=0777"
     ];

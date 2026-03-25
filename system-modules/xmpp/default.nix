@@ -2,8 +2,8 @@
 let
   baseDomain = "snack.haus";
   domain = "xmpp.${baseDomain}";
-  mucDomain = "conference.${domain}";
-  uploadDomain = "upload.${domain}";
+  mucDomain = "groups${domain}";
+  uploadDomain = "upload${domain}";
   sslCertDir = config.security.acme.certs.${baseDomain}.directory;
 in 
 {
@@ -29,9 +29,23 @@ in
       restrictRoomCreation = false;
     }];
 
+    disco_items = [
+      {
+        description = "http upload";
+        url = uploadDomain;
+      }
+      {
+        description = "multi-user chat";
+        url = mucDomain;
+      }
+    ];
+
     virtualHosts.${baseDomain} = {
       enabled = true;
       domain = baseDomain;
+      extraConfig = ''
+      http_host = "${domain}"
+      '';
       ssl = {
         cert = "${sslCertDir}/fullchain.pem";
         key = "${sslCertDir}/key.pem";
@@ -45,6 +59,7 @@ in
       dialback   = true;
       disco      = true;
       carbons    = true;
+      proxy65    = false;
       pep        = true;
       mam        = true;
       ping       = true;
@@ -55,7 +70,7 @@ in
     allowRegistration = false;
   };
 
-  users.groups.certs.members = ["prosidy" "nginx" "acme" ];
+  users.groups.certs.members = ["prosody" "nginx" "acme" ];
 
   sops.secrets."snack-haus" = {};
 
