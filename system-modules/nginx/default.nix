@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   imports = [
     ./plex-nginx.nix
@@ -66,6 +66,9 @@
           proxyPass = "http://192.168.1.7:" + toString(port) + "/";
           proxyWebsockets = true;
           recommendedProxySettings = true;
+          extraConfig = lib.mkDefault ''
+            client_max_body_size 50M;
+          '';
         };
       };
       mercymorn = port: base {
@@ -100,8 +103,28 @@
       "overseerr.snack.management" = john 5055;
       
       "audiobooks.snack.management" = gideon 8000;
-      "calibre.snack.management" = gideon 8083;
       "paperless.snack.management" = gideon 28981;
+      "calibre.snack.management" = {
+        useACMEHost = "snack.management";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://192.168.1.7:8083";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+          extraConfig = ''
+              # proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+              proxy_connect_timeout 300s;
+              proxy_send_timeout 300s;
+              proxy_read_timeout 300s;
+              client_max_body_size 200m;
+          '';
+        };
+      };
       "immich.snack.management" = {
         useACMEHost = "snack.management";
         forceSSL = true;
