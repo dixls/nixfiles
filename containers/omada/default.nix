@@ -27,6 +27,7 @@
         29814
         29815
         29816
+        29817
       ];
     };
   };
@@ -35,7 +36,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."omada-controller" = {
-    image = "mbentley/omada-controller:latest";
+    image = "mbentley/omada-controller:6";
     autoStart = true;
     environment = {
       "MANAGE_HTTPS_PORT" = "8043";
