@@ -65,6 +65,13 @@
         prefixLength = 24;
       }
     ];
+    interfaces.ens19.useDHCP = true;
+    interfaces.ens19.ipv4.addresses = [
+      {
+        address = "192.168.40.7";
+        prefixLength = 24;
+      }
+    ];
   };
 
   # Define a user account.
