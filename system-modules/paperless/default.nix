@@ -12,6 +12,7 @@
   fileSystems."/exports/paperless-ingest" = {
     device = config.services.paperless.consumptionDir;
     options = [ "bind" ];
+    fsType = "auto";
   };
 
   services.nfs.server = {
