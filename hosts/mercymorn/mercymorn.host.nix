@@ -6,8 +6,18 @@
     firewall = {
       allowPing = true;
       allowedTCPPorts = [ 22 80 443 ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+      trustedInterfaces = [ "tailscale0" ];
+      checkReversePath = "loose";
     };
+    nftables.enable = true;
   };
+
+  systemd.services.tailscaled.serviceConfig.Environment = [ 
+    "TS_DEBUG_FIREWALL_MODE=nftables" 
+  ];
+  systemd.network.wait-online.enable = false; 
+  boot.initrd.systemd.network.wait-online.enable = false;
 
   # boot.loader.efi.efiSysMountPoint = "/dev/sda";
   boot.loader.systemd-boot.enable = false;
@@ -36,6 +46,8 @@
   ];
 
   services.openssh.enable = true;
+  services.tailscale.useRoutingFeatures = "server";
+
 
   # fileSystems."/mnt/snack-pool" = {
   #   device = "//192.168.1.6/snack-pool";

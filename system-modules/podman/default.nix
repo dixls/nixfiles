@@ -31,5 +31,5 @@ environment.systemPackages = with pkgs; [
 ];
 
 networking.firewall.interfaces.podman0.allowedUDPPorts = [ 53 ];
-networking.firewall.interfaces."podman+".allowedUDPPorts = [ 53 ];
+networking.firewall.interfaces."podman".allowedUDPPorts = [ 53 ];
 }
