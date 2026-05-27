@@ -1,23 +1,23 @@
 {pkgs, lib, config, ...}: {
-  services.sops.secrets.jellyfin-homepage-token = {};
+  sops.secrets.homepage-secrets = {};
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
     allowedHosts = "192.168.1.7:8082";
-
+    environmentFile = config.sops.secrets.homepage-secrets.path;
 
     widgets = [
       {
         search = {
           provider = "duckduckgo";
           target = "_blank";
-        }
+        };
       }
       {
         jellyfin = {
           url = "https://jellyfin.snack.management";
-          key = config.sops.secrets.jellyfin-homepage-token.path;
-          version = 2;
+          key = "{{HOMEPAGE_JELLYFIN_KEY}}";
+          version = 1;
           enableBlocks = true;
           enableNowPlaying = true;
           enableUser = true;
