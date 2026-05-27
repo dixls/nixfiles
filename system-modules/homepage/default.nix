@@ -1,5 +1,8 @@
 {pkgs, lib, config, ...}: {
-  sops.secrets.homepage-secrets = {};
+  sops.secrets.homepage-secrets = {
+    uid = 
+  };
+
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
@@ -13,18 +16,6 @@
           target = "_blank";
         };
       }
-      {
-        jellyfin = {
-          url = "https://jellyfin.snack.management";
-          key = "{{HOMEPAGE_JELLYFIN_KEY}}";
-          version = 1;
-          enableBlocks = true;
-          enableNowPlaying = true;
-          enableUser = true;
-          enableEpisodeNumber = true;
-        };
-      }
-
     ];
 
     services = [
@@ -35,6 +26,16 @@
               description = "Media server";
               href = "https://jellyfin.snack.management";
               siteMonitor = "https://jellyfin.snack.management";
+              widget = {
+                type = "jellyfin";
+                url = "https://jellyfin.snack.management";
+                key = "{{HOMEPAGE_VAR_JELLYFIN}}";
+                version = 1;
+                enableBlocks = true;
+                enableNowPlaying = true;
+                enableUser = true;
+                enableEpisodeNumber = true;
+              };
             };
           }
           {
