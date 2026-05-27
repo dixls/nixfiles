@@ -7,6 +7,7 @@
     ./paperless
     ./xmpp
     ./calibre
+    ./homepage
   ];
 
   sops.secrets."matrix-synapse-reg-secret" = {};
