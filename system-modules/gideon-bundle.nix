@@ -6,7 +6,7 @@
     ./jellyfin
     ./paperless
     ./xmpp
-    ./calibre
+    # ./calibre
     ./homepage
   ];
 

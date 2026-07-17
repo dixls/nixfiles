@@ -165,7 +165,7 @@
 
     home-manager
 
-    texlive.combined.scheme-minimal
+    texliveSmall
     wkhtmltopdf
   ];
 }
