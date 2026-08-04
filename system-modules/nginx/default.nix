@@ -99,8 +99,11 @@
       "prowlarr.snack.management" = john 9696;
       "sonarr.snack.management" = john 8989;
       "radarr.snack.management" = john 7878;
+      "lidarr.snack.management" = john 8686;
       "qbittorrent.snack.management" = john 8082;
       "overseerr.snack.management" = john 5055;
+      "slsk.snack.management" = john 5030;
+      "bambuddy.snack.management" = john 8000;
       
       "audiobooks.snack.management" = gideon 8000;
       "paperless.snack.management" = gideon 28981;
@@ -189,11 +192,11 @@
           recommendedProxySettings = true;
         };
       };
-      "snack-can.snack.management" = {
+      "mithraeum.snack.management" = {
         forceSSL = true;
         useACMEHost = "snack.management";
         locations."/" = {
-          proxyPass = "https://192.168.1.15:8006";
+          proxyPass = "https://192.168.1.30:8006";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
