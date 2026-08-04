@@ -5,7 +5,10 @@
     enable = true;
     wayland.enable = true;
   };
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6 = {
+    enable = true;
+    enableQt5Integration = true;
+  };
 
   environment.systemPackages = [
     #pkgs.libsForQt5.qtstyleplugin-kvantum

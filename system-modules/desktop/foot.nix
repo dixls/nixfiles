@@ -9,7 +9,7 @@
         dpi-aware = "yes";
         pad = "5x5";
       };
-      colors = {
+      colors-dark = {
         foreground="E9E0D2"; # Text
         background="08211B"; # Base
         alpha=".85";
