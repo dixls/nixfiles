@@ -142,6 +142,15 @@
             sops-nix.nixosModules.sops
           ];
         };
+ 
+        ianthe = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = lib.lists.flatten [ 
+            commonModules
+            ./hosts/ianthe/ianthe.host.nix 
+            sops-nix.nixosModules.sops
+          ];
+        }; 
 
         harrowhark = nixpkgs.lib.nixosSystem {
           inherit system;
