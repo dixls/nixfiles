@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "mercymorn";
+    hostName = "ianthe";
     firewall = {
       allowPing = true;
       allowedTCPPorts = [ 22 80 443 ];
