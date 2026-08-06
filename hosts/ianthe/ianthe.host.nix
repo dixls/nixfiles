@@ -25,6 +25,11 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
+  boot.kernelParams = [
+    "amdgpu.si_support=1"
+    "radeon.si_support=0"
+  ];
+
   # services.xserver.enable = true;
 
   # Use this to pick which GUI and other bundles
@@ -40,6 +45,7 @@
     # other bundles
     #./../../system-modules/server-bundle.nix
     #./../../system-modules/sweet-bundle.nix
+    ./../../system-modules/ianthe-bundle.nix
     # ./../../containers/mercymorn-bundle.nix
 
     # ./../../system-modules/mastodon
