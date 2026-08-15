@@ -78,6 +78,13 @@
           recommendedProxySettings = true;
         };
       };
+      ianthe = port: base {
+        "/" = {
+          proxyPass = "https://192.168.1.31:" + toString(port) + "/";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
+      };
       john = port: base {
         "/" = {
           proxyPass = "http://192.168.1.8:" + toString(port) + "/";
@@ -94,6 +101,8 @@
       };
     in {
       "truenas.snack.management" = ortus 80;
+
+      "llama.snack.management" = ianthe 8080;
 
       "dockge.snack.management" = john 5001;
       "prowlarr.snack.management" = john 9696;
@@ -197,6 +206,33 @@
         useACMEHost = "snack.management";
         locations."/" = {
           proxyPass = "https://192.168.1.30:8006";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
+      };
+      "second.snack.management" = {
+        forceSSL = true;
+        useACMEHost = "snack.management";
+        locations."/" = {
+          proxyPass = "https://192.168.1.42:8006";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
+      };
+      "third.snack.management" = {
+        forceSSL = true;
+        useACMEHost = "snack.management";
+        locations."/" = {
+          proxyPass = "https://192.168.1.43:8006";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
+      };
+      "fourth.snack.management" = {
+        forceSSL = true;
+        useACMEHost = "snack.management";
+        locations."/" = {
+          proxyPass = "https://192.168.1.44:8006";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
