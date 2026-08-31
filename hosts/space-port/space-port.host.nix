@@ -37,7 +37,7 @@
 
     ./../../gui/desktop-defaults.nix
     # ./../../gui/swayfx # this apparently only works from home manager maybe? but some extra bits required
-    # ./../../gui/gnome
+     ./../../gui/gnome
 
     # other bundles
     #./../system-modules/server-bundle.nix

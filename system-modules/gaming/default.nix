@@ -16,6 +16,8 @@
 
     cameractrls
     obs-studio
+
+    beammp-launcher
   ];
   programs.steam = {
     enable = true;

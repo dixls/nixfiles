@@ -12,10 +12,17 @@ let
     blur-my-shell
     hot-edge
     tweaks-in-system-menu
+    just-perfection
   ];
   packages = with pkgs; [
     gnome-tweaks
     ddcutil
+    # Themes the app titlebars
+    qadwaitadecorations
+    qadwaitadecorations-qt6
+    # Themes the apps
+    qgnomeplatform
+    qgnomeplatform-qt6
   ];
 in 
 {
@@ -49,6 +56,12 @@ in
   services.udev.extraRules = ''
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
   '';
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
 
   # services.xserver.displayManager.gdm.wayland = false;
 
