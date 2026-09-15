@@ -82,6 +82,9 @@
     cachix
 
     clinfo
+
+    gnumake
+    linuxHeaders
   ];
 
   services.hardware.openrgb = {

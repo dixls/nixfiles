@@ -1,7 +1,7 @@
 { pkgs, inputs, lib, ... }:
 {
   imports = [
-    # ./gx100.nix
+    #./gx100-1.nix
   ];
 
   environment.systemPackages = with pkgs; [
