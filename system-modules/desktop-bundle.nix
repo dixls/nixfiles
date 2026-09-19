@@ -14,6 +14,8 @@
     darktable
     inkscape-with-extensions
 
+    audacity
+
     gutenprint
     gutenprintBin
 
