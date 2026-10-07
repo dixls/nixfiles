@@ -11,7 +11,7 @@ keys:
     - &gideon age1mkzpzd2vk84na2ycyq3p5ks6lxfk2tej2qwlzgjdf0ml4nhy6p2q5y4spl
     - &mercymorn age1yudjs7yd47v84d04swqcv6ywcxgd3z4906k26jfhq9vfx6zgzvgsudzrq8
     - &harrowhark age1yudjs7yd47v84d04swqcv6ywcxgd3z4906k26jfhq9vfx6zgzvgsudzrq8
-    - &cytherea age1t9fhx006an2geru0nlym9t5sxx3k2ey2d7nxjel6334txpqv9vhqfp0ter
+    - &cytherea age1nqfe0ez95m90sh7hk69qvknud69t9zr7jett8mn4ezqas0krrvzqdhu357
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
