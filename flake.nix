@@ -142,7 +142,16 @@
             sops-nix.nixosModules.sops
           ];
         };
- 
+  
+        cytherea = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = lib.lists.flatten [ 
+            commonModules
+            ./hosts/cytherea/cytherea.host.nix 
+            sops-nix.nixosModules.sops
+          ];
+        }; 
+
         ianthe = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = lib.lists.flatten [ 
