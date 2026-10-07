@@ -34,7 +34,7 @@
 
   # Use this to pick which GUI and other bundles
   imports = [
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../users/pixls.nix
 
     # ./../gui/desktop-defaults.nix
