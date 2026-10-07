@@ -32,6 +32,7 @@
         "desktop.ini"
       ];
       PAPERLESS_OCR_LANGUAGE = "eng";
+      PAPERLESS_OCR_MODE = "off";
       PAPERLESS_CONSUMER_POLLING = 60;
       PAPERLESS_TIKA_ENABLED = true;
       PAPERLESS_OCR_USER_ARGS = {

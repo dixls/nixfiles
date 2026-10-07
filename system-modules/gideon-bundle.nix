@@ -1,13 +1,16 @@
 {pkgs, lib, config, ...}: {
   imports = [
     ./podman
-    ./matrix-synapse
+    # ./matrix-synapse
     ./nextcloud
     ./jellyfin
-    ./paperless
-    ./xmpp
+    # ./paperless
+    # ./xmpp
     ./calibre
-    ./homepage
+    # ./homepage
+
+    #./llama-cpp
+    #./llama-cpp/qwen38-27b.nix
   ];
 
   sops.secrets."matrix-synapse-reg-secret" = {};
